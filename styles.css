@@ -191,7 +191,7 @@ h3 {
   display: flex;
   justify-content: center;
   gap: 6%; /* adjust gap between icons here */
-  margin-bottom: 20px; /* adjust space after the icons here */
+  margin-bottom: 35px; /* adjust space after the icons here */
 }
 
 .social-links a {

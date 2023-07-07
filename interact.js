@@ -63,16 +63,28 @@ form.addEventListener('submit', function(event) {
   // Access the email input field value
   var email = document.querySelector('.newsletter-signup form input[type="email"]').value;
 
-  // Check if the email field is not empty
+  // Check if the email field is not empty and send the 'email' to Formspree
   if(email.trim() !== '') {
-    console.log('Email Submitted:', email);
-  
-    // Change button text, disable it after email is submitted, and add 'disabled' CSS class
     var subscribeButton = document.querySelector('.newsletter-signup form button');
-    subscribeButton.textContent = 'Subscribed';
-    subscribeButton.disabled = true;
-    subscribeButton.classList.add('disabled');
-
-    // You can add your own AJAX call or fetch API request here to send 'email' to your server
+    fetch('https://formspree.io/f/mleyejpr', { // replace with your Formspree ID
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: email })
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      console.log('Email Submitted:', email);
+      subscribeButton.textContent = 'Subscribed';
+      subscribeButton.disabled = true;
+      subscribeButton.classList.add('disabled');
+      return response.json();
+    }).then(json => {
+      console.log('Email sent successfully:', json);
+    }).catch(error => {
+      console.error('Failed to send email:', error);
+    });
   }
 });
