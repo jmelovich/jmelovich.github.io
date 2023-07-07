@@ -1,0 +1,272 @@
+* {
+    box-sizing: border-box;
+  }
+
+.title {
+    max-width: 80%;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 100px;
+    padding: 0;
+    font-family: 'Exo 2', sans-serif;
+    overflow: auto;
+}
+
+.content {
+    max-width: 100%; /* Maximum width is the larger value between 80% of viewport and 2000px */
+    margin: auto; /* Center the content */
+}
+@media screen and (min-width: 1800px) {
+    .content {
+        max-width: 80%; /* If the viewport is larger than 2500px, set max-width to 2000px */
+    }
+}
+
+
+
+.video-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: min(80%, 1400px); /* Video should be about 30% smaller than the gallery */
+    padding-top: min(50%, 800px); /* Adjusted aspect ratio (70% of 56.25%) */
+    margin: auto; /* To center the video */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h2 {
+    font-family: 'Exo 2', sans-serif;
+    text-align: center;
+    font-size: calc(1.5em + 1vw);
+}
+
+h3 {
+    font-family: 'Exo 2', sans-serif;
+    text-align: center;
+    font-size: calc(1em + 1vw);
+}
+
+.gallery {
+    display: grid; /* Using grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 2%; /* Control your border size here */
+    padding: 10px; /* Edge Padding */
+    box-sizing: border-box; /* This makes sure that the padding is included in .gallery's total width */
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center; /* New line added */
+}
+
+
+.gallery-item {
+  display: flex; /* Using Flexbox for centering the images */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+
+.gallery img {
+    max-width: 150%; /* Two images per row with spacing around */
+    max-height: 150%;  /* Maximum height */
+    object-fit: cover;  /* Maintain aspect ratio */
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .gallery img {
+        max-height: 200px;  /* Smaller maximum height for smaller screens */
+    }
+    .newsletter-signup {
+        padding-top: 100px;  /* Add some space at the top of the newsletter signup section */
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 80%;
+    max-width: 80vw;
+
+    
+}
+
+.modal-content img {
+   max-width: 100%;
+   height: auto;
+   /* Add the following line */
+   max-height: 70vh;
+   object-fit: contain;
+}
+
+.modal-description {
+    color: #fff;  /* White text */
+    font-family: 'Exo 2', sans-serif; /* Exo 2 font */
+    font-size: 24px; /* Size of the text */
+    text-align: justify; /* Alignment of the text */
+    margin-top: 20px; /* Space to the top */
+    padding: 10px; /* Inner space */
+    line-height: 1.5; /* Space between lines of text */
+    background-color: #000; /* Dark gray background */
+    border-radius: 5px; /* Roundness of the corners */
+}
+
+
+#caption {
+    font-size: calc(2em + 1vw);
+    padding-top: 10px;
+    font-family: 'Exo 2', sans-serif;
+}
+
+#description {
+    /* other styles */
+    margin-bottom: 20%; /* Adjust this value as per your requirement */
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+.description {
+    color: #fff;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 10px;
+    width: 80%;
+    --shrunk-height: 200px;
+    max-height: var(--shrunk-height);
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    cursor: pointer;
+    background-color: #222;
+    font-family: 'Exo 2', sans-serif;
+    font-size: calc(1em + 0.2vw); /* NEW FONT SIZE PROPERTY */
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 6%; /* adjust gap between icons here */
+  margin-bottom: 20px; /* adjust space after the icons here */
+}
+
+.social-links a {
+  color: white; /* change color as needed */
+  font-size: 300%; /* adjust size of icons */
+  text-decoration: none;
+}
+
+
+.contact-info {
+    background-color: rgba(0,0,0,0.8); /* Dark Backbround */
+    color: #fff; /* White Text */
+    font-family: 'Exo 2', sans-serif; /* Font Family */
+    padding: 20px; /* Padding around text */
+    text-align: center; /* Centering the text */
+    position: fixed; /* Fixing the position */
+    bottom: 0; /* Position at Bottom */
+    width: 100%; /* Full Width */
+}
+
+.contact-link {
+    color: #fff; /* White links */
+    text-decoration: none; /* Removing underline from links */
+    margin-right: 10px;
+}
+
+.contact-link:hover {
+    color: #ddd; /* Lighter color on hover */
+}
+
+/* Styling the newsletter sign-up div */
+.newsletter-signup {
+    text-align: center;
+    font-family: 'Exo 2', sans-serif;
+    width: 80%; /* Adjust as needed */
+    margin: auto; /* Center the element horizontally */
+    border: 2px solid #000; /* Black border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 1em; /* Padding inside border */
+    padding-top: max(0.5%, 100px); /* Adjust as needed */
+}
+
+/* Styling the input fields and button */
+.newsletter-signup form input[type="email"],
+.newsletter-signup form button {
+    background-color: #444; /* Darker color */
+    color: white; /* White text */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* Removes default borders */
+    padding: 1vw; /* Responsive padding */
+    margin-top: 1vw; /* Responsive top margin */
+    font-size: calc(1em + 1vw); /* Responsive font size */
+    font-family: 'Exo 2', sans-serif;
+  /*  width: 70%; /* Occupies 70% width of the parent div */
+    max-width: max(70%, 300px); /* Adjust as needed */
+    display: inline-block; /* Allows the elements to be on the same line at larger screen sizes */
+}
+
+/* Adding some hover effect for the button */
+.newsletter-signup form button:hover {
+    opacity: 0.9; /* Reduce opacity on hover */
+    cursor: pointer;
+}
+
+/* Styling the caption */
+.newsletter-signup .caption {
+    font-size: calc(0.8em + 0.5vw); /* Responsive font size */
+    color: #666; /* Caption text color */
+    max-width: 90%; /* Limit width */
+    margin: 1em auto; /* Centering and space above and below */
+    line-height: 1.4; /* Adjusts the vertical spacing between lines of text */
+}
+
+/*CSS*/
+.newsletter-signup form button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

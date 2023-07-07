@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Therum Music</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Add this line -->
+
+    
+</head>
+<body>
+    <img class="title" src="TherumLogoCropped.jpg" alt="Therum Logo">
+    <div class="content">
+<!-- Social Links Section Starts Here -->
+        <div class="social-links">
+            <a href="https://www.instagram.com/therum.music/" target="_blank" class="fa fa-instagram"></a>
+            <a href="https:///www.youtube.com/@therummusic/" target="_blank" class="fa fa-youtube"></a>
+            <a href="https://soundcloud.com/therummusic/" target="_blank" class="fa fa-soundcloud"></a>
+            <a href="https://open.spotify.com/artist/4G7WRo3PoJefJeeAFiZvNC?si=04d29bc6815a47c4" target="_blank" class="fa fa-spotify"></a>
+            <a href="https://therum1.bandcamp.com/" target="_blank" class="fa fa-bandcamp"></a>
+        </div>
+<!-- Social Links Section Ends Here -->
+
+        <!-- The YouTube video embed -->
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/xs1fRAFCAug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+            <!-- Description Section Starts Here -->
+        <p class="description">Therum is the creative brainchild of John Luke Melovich, a talented multi-instrumentalist, producer, and audio engineer based in Gainesville, Florida. Melovich's passion for music and innovative approach to songwriting shine through in Therum's unique blend of psychedelic rock and diverse genre influences.
+            The project's first album, "Two Sunken Sons," was released in 2021 during Melovich's senior year of high school, showcasing his early talent and dedication to his craft. Therum continued to explore new musical horizons with the 2022 release of the dystopian electronica single, "I Know (That You Know That I Knew)."
+            Currently attending university in Gainesville, Melovich continues to expand Therum's discography and captivate listeners with his immersive sonic experiences. With influences from bands like Radiohead, Tame Impala, Muse, The Strokes, and Red Hot Chili Peppers, Therum is a testament to Melovich's versatility and commitment to pushing the boundaries of modern music.
+            Check out us on Bandcamp at therum1.bandcamp.com </p>
+        <!-- Description Section Ends Here -->
+
+
+
+
+
+        <h2>Discography</h2>
+        <div class="gallery">
+            <figure class="gallery-item">
+                <img src="MissingTexture.jpg" alt="2023" onclick="openModal(this,)">
+            </figure>
+            <figure class="gallery-item">
+                <img src="SweetVictoriesArt.jpg" alt="Sweet Victories / Sour Defeat" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/6aIRDQTEquSBgy15wfCpRp\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+            </figure>
+            <figure class="gallery-item">
+                <img src="IKnowThatYouKnow.png" alt="I Know (That You Know That I Knew)" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/7GtWOIwqO6csixTeM1kak1\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+            </figure>     
+            <figure class="gallery-item">
+                <img src="ILikeBeans.jpg" alt="I Like Beans" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/09gPcMmiAmPtD2LGEqS95x\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+            </figure>
+            <figure class="gallery-item">
+                <img src="TwoSunkenSons.jpg" alt="Two Sunken Sons" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/2oX2lq1AH0l81vPCsveBAc\' style=\'width:min(800px, 80vw); height:60vh;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+            </figure>
+            <!-- Add more figure tags for additional images -->
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="newsletter-signup">
+            <h2>Stay Updated</h2>
+            <form>
+                <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS">
+                <button type="submit" name="subscribe">Subscribe</button>
+            </form>
+            <p class="caption">[subscribe to get email updates on the latest from Therum]</p>
+        </div>
+
+    
+        <!-- The Gallery -->
+        <h3>The Gallery</h3>
+        <div class="gallery">
+            <figure class="gallery-item">
+                <img src="bsodEnd.jpeg" alt="bsod_END" onclick="openModal(this, '<iframe style=\'width:min(80vw, 800px); height:150px;\' scrolling=\'no\' frameborder=\'no\' allow=\'autoplay\' src=\'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1495568995&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true\'></iframe>')">
+            </figure>
+            <figure class="gallery-item">
+                <img src="cornfield.png" alt="UF0_grnd" onclick="openModal(this, '<iframe style=\'width:min(80vw, 800px); height:150px;\' scrolling=\'no\' frameborder=\'no\' allow=\'autoplay\' src=\'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1451619487&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true\'></iframe>')">
+            </figure>
+
+            <figure class="gallery-item">
+                <img src="TherumPainting1.jpeg" alt="Therum Painting 1" onclick="openModal(this)">
+            </figure>
+            <figure class="gallery-item">
+                <img src="TherumPainting3.jpeg" alt="Therum Painting 1" onclick="openModal(this)">
+            </figure>
+            <figure class="gallery-item">
+                <img src="TherumPainting2.jpeg" alt="Therum Painting 1" onclick="openModal(this)">
+            </figure>
+            <figure class="gallery-item">
+                <img src="SVArt2.jpg" alt="Sweet Victories / Sour Defeat" onclick="openModal(this)">
+            </figure>
+            <figure class="gallery-item">
+                <img src="SVArt3.jpg" alt="Sweet Victories / Sour Defeat" onclick="openModal(this)">
+            </figure>
+            <figure class="gallery-item">
+                <img src="SVArt4.jpg" alt="Sweet Victories / Sour Defeat" onclick="openModal(this)">
+            </figure>
+            <figure class="gallery-item">
+                <img src="AlbumBackArt.png" alt="Two Sunken Sons [additional-art]" onclick="openModal(this)">
+            </figure>
+        </div>
+        
+    </div>
+    
+
+
+
+
+
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <img id="img01" class="modal-img">
+        <div id="caption" class="title"></div>
+        <div id="description" class="modal-description"></div>
+    </div>
+</div>
+
+<div class="contact-info">
+    <a href="mailto:therum.music@gmail.com" class="contact-link">Contact: therum.music@gmail.com</a>
+
+
+
+
+    <script src="interact.js"></script>
+</body>
+</html>
