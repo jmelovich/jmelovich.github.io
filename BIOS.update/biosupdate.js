@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const backgroundImages = [
-        'IM_Bonus1_2x.png',
-        'IM_Bonus2_2x.png',
-        'IM_Bonus3_4x.png',
+        'IM_Bonus1_4x.jpg',
+        'IM_Bonus2_4x.jpg',
+        'IM_Bonus3_4x.jpg',
+        'IM_Bonus4_4x.jpg',
+        'IM_Bonus5_4x.jpg',
     ];
 
     function setRandomBackground() {
@@ -33,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const albumData = {
         title: "BIOS.update",
-        coverArt: "BU_FinalAlbumArt_4k.png",
+        coverArt: "IM_FinalAlbumArt_4k.jpg",
         albumDownloadId: "1PQn_euNX0bjQ_iuMsvSRiHtuUinvXNHR",
         gallery: [
             // Add your gallery images here
