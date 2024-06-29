@@ -9,17 +9,18 @@
     <meta name="description" content="Official Website of Therum - Experience music, videos, tour dates, and more.">
 
     <!-- Favicon -->
-    <link rel="icon" href="TherumIcon.ico">
+    <link rel="icon" href="source/icons/TherumIcon.ico">
 
 
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Add this line -->
 
-    
+
+    <link rel="stylesheet" type="text/css" href="therminal/therminal-iframe.css">
 </head>
 <body>
-    <img class="title" src="TherumLogoCropped.jpg" alt="Therum Logo">
+    <img class="title" src="source/TherumLogoCropped.jpg" alt="Therum Logo">
     <div class="content">
 <!-- Social Links Section Starts Here -->
         <div class="social-links">
@@ -154,9 +155,11 @@
 <div class="contact-info">
     <a href="mailto:therum.music@gmail.com" class="contact-link">Contact: therum.music@gmail.com</a>
 
-
+    <button id="therminal-toggle">Open Therminal</button>
+    <iframe id="therminal-iframe" src="therminal.html"></iframe>
 
 
     <script src="interact.js"></script>
+    <script src="therminal/therminal-iframe.js"></script>
 </body>
 </html>

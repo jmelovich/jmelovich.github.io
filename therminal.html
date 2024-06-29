@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Therminal</title>
+    <link rel="stylesheet" href="therminal/therminal.css">
+    <style>
+        body.in-iframe, 
+        body.in-iframe #terminal {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border: none;
+        }
+        body.in-iframe #terminal {
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        // Check if the page is loaded in an iframe
+        window.addEventListener('load', function() {
+            if (window.self !== window.top) {
+                document.body.classList.add('in-iframe');
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="terminal">
+        <div id="output"></div>
+        <div id="input-line">
+            <span id="prompt">> </span>
+            <input type="text" id="input" autofocus />
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "6FrCgytWxzHf6TPjc",
+            });
+        })();
+    </script>
+    <script src="therminal/TherminalMain.js"></script>
+    <script src="therminal/TherminalCommands.js"></script>
+    <script src="therminal/TherminalCommandHandler.js"></script>
+</body>
+</html>

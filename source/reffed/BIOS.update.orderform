@@ -1,0 +1,24 @@
+;;; Congratulations on unlocking this file!
+;;; This is the order form for a (free!!!) physical copy of BIOS.update
+;;; Fill this out, then encrypt its contents for the provided public key
+;;; Use the 'request BIOS.update' command from the Therminal and paste/submit the encrypted string there
+;;; You should receive a confirmation email within a few days from therum.music@gmail.com
+
+[ShippingInfo]
+FullName=""
+Address=""
+City=""
+State=""
+ZipCode=""
+
+[ContactInfo]
+Email=""
+Phone=""
+
+;;; Here is where you specify what type of physical copy you want
+;;; Physical Type Options: "CD", "Cassette", "USB"
+
+[PhysicalCopy]
+PhysicalType=""
+CustomInstructions=""
+

@@ -1,0 +1,58 @@
+/* therminal-iframe.css */
+#therminal-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0f0;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1000;
+    font-family: 'Courier New', monospace;
+}
+
+#therminal-iframe {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 50vw; /* 50% of viewport width */
+    max-width: 800px; /* Maximum width */
+    height: 60vh; /* 60% of viewport height */
+    border: none;
+    z-index: 999;
+    transition: all 0.3s ease;
+    transform: translateY(100%);
+    background-color: #000;
+}
+
+#therminal-iframe.expanded {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    #therminal-iframe {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 992px) {
+    #therminal-iframe {
+        width: 70vw;
+    }
+}
+
+@media (max-width: 768px) {
+    #therminal-iframe {
+        width: 80vw;
+        height: 70vh;
+    }
+}
+
+@media (max-width: 576px) {
+    #therminal-iframe {
+        width: 90vw;
+        height: 80vh;
+    }
+}
