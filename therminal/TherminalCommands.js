@@ -35,6 +35,10 @@ ${availablePages.join("\n")}\n\n`);
                 let pageIndex = availablePages.map(p => p.toLowerCase()).indexOf(page);
                 let pageLink = availablePageLinks[pageIndex];
                 typeWriter(`Navigating to ${page}...\n\n`);
+
+                // Add a parameter to the URL to indicate that Therminal should be expanded
+                const separator = pageLink.includes('?') ? '&' : '?';
+                pageLink += `${separator}expandTherminal=true`;
                 
                 // Check if the terminal is running in an iframe
                 if (isInIframe) {

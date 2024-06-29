@@ -63,5 +63,16 @@
 
     <script src="biosupdate.js"></script>
     <script src="../therminal/therminal-iframe.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('expandTherminal') === 'true') {
+                const therminalToggle = document.getElementById('therminal-toggle');
+                if (therminalToggle) {
+                    therminalToggle.click();
+                }
+            }
+        });
+    </script>
 </body>
 </html>

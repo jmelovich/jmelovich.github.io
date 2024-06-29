@@ -15,7 +15,12 @@ function toggleTherminal() {
             if (inputField) {
                 inputField.focus();
             }
-        }, 100); // Small delay to ensure iframe content is loaded
+            
+            // Clear the URL parameter after expanding
+            const url = new URL(window.location);
+            url.searchParams.delete('expandTherminal');
+            window.history.replaceState({}, '', url);
+        }, 100);
     }
 }
 
