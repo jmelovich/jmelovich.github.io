@@ -10,6 +10,18 @@ body {
     min-height: 100vh;
 }
 
+html, body {
+    scroll-behavior: smooth;
+}
+
+/* iOS Safari specific smooth scrolling */
+@supports (-webkit-overflow-scrolling: touch) {
+    .background-container {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}
+
 .background-container {
     position: fixed;
     top: 0;
@@ -38,7 +50,7 @@ body {
 
 .album-art {
     margin-bottom: 40px;
-    max-width: min(50%, 768px);
+    max-width: min(80%, 800px);
     margin-left: auto;
     margin-right: auto;
 }
@@ -50,9 +62,9 @@ body {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .album-art {
-        max-width: 80%;
+        max-width: 100%;
     }
 }
 
@@ -225,13 +237,16 @@ body {
     display: flex;
     justify-content: center;
     gap: 30px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;;
 }
 
 .music-link {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
     color: white;
-    font-size: 60px;
+    font-size: 250%;
     text-decoration: none;
     transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
