@@ -60,7 +60,59 @@ function triggerDownload(url) {
     link.remove();
 }
 
+// for contact command
+function handleContactForm(input) {
+    if (input.toLowerCase() === 'cancel') {
+        isContactFormActive = false;
+        contactFormStep = 0;
+        contactFormData = { name: '', email: '', message: '' };
+        typeWriter("Contact form cancelled.\n\n");
+        isExecuting = false;
+        executeNextCommand();
+        return;
+    }
 
+    switch (contactFormStep) {
+        case 1:
+            contactFormData.name = input;
+            contactFormStep++;
+            typeWriter("Please enter your email (or type 'cancel' to abort):\n");
+            break;
+        case 2:
+            contactFormData.email = input;
+            contactFormStep++;
+            typeWriter("Please enter your message (or type 'cancel' to abort):\n");
+            break;
+        case 3:
+            contactFormData.message = input;
+            sendContactForm();
+            break;
+    }
+}
+
+
+function sendContactForm() {
+    typeWriter("Sending your message...\n");
+
+    emailjs.send("service_therummusic", "therminal.message", {
+        from_name: contactFormData.name,
+        email: contactFormData.email,
+        msg: contactFormData.message
+    }, "6FrCgytWxzHf6TPjc")
+    .then(function(response) {
+        typeWriter("Message sent successfully!\n\n");
+    }, function(error) {
+        typeWriter("Failed to send message. Please try again later.\n\n");
+        console.error("EmailJS error:", error);
+    })
+    .finally(() => {
+        isContactFormActive = false;
+        contactFormStep = 0;
+        contactFormData = { name: '', email: '', message: '' };
+        isExecuting = false;
+        executeNextCommand();
+    });
+}
 
 function downloadPGPMsg() {
     const blob = new Blob([encryptedMessage], { type: "text/plain" });

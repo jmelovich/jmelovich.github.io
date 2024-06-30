@@ -4,6 +4,15 @@
 const availablePages = ["home"];
 const availablePageLinks = ["index.html"];
 
+// Add these variables at the top of the file
+let isContactFormActive = false;
+let contactFormStep = 0;
+let contactFormData = {
+    name: '',
+    email: '',
+    message: ''
+};
+
 const commands = {
     help: () => {
         let helpText = `Available commands:
@@ -13,15 +22,16 @@ const commands = {
 - download [release-title]: Download the given therum release
     - download ls: List all downloadable releases
 - about [arg]: Display information about given argument
-- clear: Clear the terminal screen`;
-
-        if (isInIframe) {
-            helpText += `\n- maximize: Open Therminal in full window`;
-            helpText += `\n- exit: Exit the terminal`;
-        }
-
-        helpText += `\n\n`;
-        typeWriter(helpText);
+- clear: Clear the terminal screen
+- contact: Send a message to Therum`;
+        
+            if (isInIframe) {
+                helpText += `\n- maximize: Open Therminal in full window`;
+                helpText += `\n- exit: Exit the terminal`;
+            }
+        
+            helpText += `\n\n`;
+            typeWriter(helpText);
     },
     nav: (args) => {
         if (args.length === 0) {
@@ -99,6 +109,12 @@ Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file
 
     download: (args) => {
         handleDownload(args);
+    },
+
+    contact: () => {
+        isContactFormActive = true;
+        contactFormStep = 1;
+        typeWriter("Please enter your name (or type 'cancel' to abort):\n");
     },
 
 

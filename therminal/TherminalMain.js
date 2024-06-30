@@ -50,7 +50,6 @@ function executeNextCommand() {
 }
 
 
-// In TherminalMain.js, update the processCommand function:
 function processCommand(userInput) {
     isExecuting = true;
     output.innerHTML += `> ${userInput}\n\n`;
@@ -60,6 +59,8 @@ function processCommand(userInput) {
         handlePGPPuzzle(userInput);
     } else if (isOrderingBIOSUpdate) {
         processPGPMessage(userInput);
+    } else if (isContactFormActive) {
+        handleContactForm(userInput);
     } else {
         const [command, ...args] = userInput.toLowerCase().split(" ");
         if (command in commands) {
