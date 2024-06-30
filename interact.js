@@ -101,18 +101,14 @@ fetch('gallery/gallery-list.json')
         }
 
         imageData.forEach(data => {
-            // Create figure and img elements
             const figure = document.createElement('figure');
             figure.className = 'gallery-item';
             const img = document.createElement('img');
             img.src = `gallery/${data.src}`;
-            img.alt = data.alt; // Get alt text from the JSON object
-            img.onclick = () => openModal(img, data.modalContent); // Assuming openModal is already defined
-
-            // Append img to figure
+            img.alt = data.alt;
+            img.style.setProperty('--object-position', data.offset);
+            img.onclick = () => openModal(img, data.modalContent);
             figure.appendChild(img);
-
-            // Insert figure at the end of the gallery div (which effectively reverses the original order)
             gallery.appendChild(figure);
         });
     })

@@ -1,51 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Therum Music</title>
-
-    <!-- Meta Tags -->
+    <title>Therum</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Official Website of Therum - Experience music, videos, tour dates, and more.">
-
-    <!-- Favicon -->
     <link rel="icon" href="source/icons/TherumIcon.ico">
-
-
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Add this line -->
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="therminal/therminal-iframe.css">
 </head>
 <body>
-    <img class="title" src="source/TherumLogoCropped.jpg" alt="Therum Logo">
     <div class="content">
-<!-- Social Links Section Starts Here -->
+        <img class="title" src="source/TherumLogoCropped.jpg" alt="Therum Logo">
+        
         <div class="social-links">
-            <a href="https://www.instagram.com/therum.music/" target="_blank" class="fa fa-instagram"></a>
-            <a href="https:///www.youtube.com/@therummusic/" target="_blank" class="fa fa-youtube"></a>
-            <a href="https://soundcloud.com/therummusic/" target="_blank" class="fa fa-soundcloud"></a>
-            <a href="https://open.spotify.com/artist/4G7WRo3PoJefJeeAFiZvNC?si=04d29bc6815a47c4" target="_blank" class="fa fa-spotify"></a>
-            <a href="https://music.apple.com/us/artist/therum/1577386360" target="_blank" class="fa fa-apple"></a>
-            <a href="https://therum1.bandcamp.com/" target="_blank" class="fa fa-bandcamp"></a>
+            <a href="https://www.instagram.com/therum.music/" target="_blank" class="fab fa-instagram"></a>
+            <a href="https://www.youtube.com/@therummusic/" target="_blank" class="fab fa-youtube"></a>
+            <a href="https://soundcloud.com/therummusic/" target="_blank" class="fab fa-soundcloud"></a>
+            <a href="https://open.spotify.com/artist/4G7WRo3PoJefJeeAFiZvNC?si=04d29bc6815a47c4" target="_blank" class="fab fa-spotify"></a>
+            <a href="https://music.apple.com/us/artist/therum/1577386360" target="_blank" class="fab fa-apple"></a>
+            <a href="https://therum1.bandcamp.com/" target="_blank" class="fab fa-bandcamp"></a>
         </div>
-<!-- Social Links Section Ends Here -->
 
-<div class="headline-section">
-    <button class="redirect-button" onclick="window.location.href='therminal.html'">MEET THERMINAL</button>
-</div>  
+        <div class="headline-section">
+            <h1>try therminal?</h1>
+            <button class="redirect-button" onclick="window.location.href='therminal.html'">TRY THERMINAL</button>
+            <h1>¿ʅɐuᴉɯɹǝɥʇ ʎɹʇ</h1>
+        </div>  
 
-        <!-- The YouTube video embed -->
         <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/xs1fRAFCAug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-            <!-- Description Section Starts Here -->
-<!-- <p class="description">
-    from the other side...
-</p> -->
-<!-- Description Section Ends Here -->
+
         <h2>Discography</h2>
         <div class="album_gallery">
             <figure class="gallery-item">
@@ -55,7 +43,7 @@
                 <img src="discography/gallery/AetherumCutsArt-4k.jpeg" alt="Aetherum Cuts - 2024" onclick="openModal(this)">
             </figure>
             <figure class="gallery-item">
-                <img src="discography/gallery/DarklinesWithinUs.jpg" alt="Darklines Within Us - 2023" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/3p9SEBWbwhPabhYlECaj2d\' style=\'width:min(800px, 80vw); height:45vh;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+                <img src="discography/gallery/DarklinesWithinUs.jpg" alt="Darklines Within Us - 2023" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/3p9SEBWbwhPabhYlECaj2d\' style=\'width:min(800px, 80vw); height:45vh; \' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
             </figure>
             <figure class="gallery-item">
                 <img src="discography/gallery/SweetVictoriesArt.jpg" alt="Sweet Victories / Sour Defeat - 2023" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/6aIRDQTEquSBgy15wfCpRp\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
@@ -69,96 +57,38 @@
             <figure class="gallery-item">
                 <img src="discography/gallery/TwoSunkenSons.jpg" alt="Two Sunken Sons - 2021" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/2oX2lq1AH0l81vPCsveBAc\' style=\'width:min(800px, 80vw); height:60vh;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
             </figure>
-            <!-- Add more figure tags for additional images -->
         </div>
 
-        <!-- Newsletter Signup -->
         <div class="newsletter-signup">
             <h2>Stay Updated</h2>
             <form>
-                <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS">
+                <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS" required>
                 <button type="submit" name="subscribe">Subscribe</button>
             </form>
             <p class="caption">[subscribe to get email updates on the latest from Therum]</p>
         </div>
 
-    
-        <!-- The Gallery -->
         <h3>The Gallery</h3>
         <div class="gallery">
-            <!-- <figure class="gallery-item">
-                <img src="gallery/IM_Bonus3_2x.jpg" alt="???" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/SirenFest1_2.jpg" alt="Siren Fest 1" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/SirenFest1_1.jpg" alt="Siren Fest 1" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/DWUArt2.jpg" alt="EMBRACE THE DARKLINES WITHIN US" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/DWUArt1.jpg" alt="EMBRACE THE DARKLINES WITHIN US" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/bsodEnd.jpeg" alt="bsod_END" onclick="openModal(this, '<iframe style=\'width:min(80vw, 800px); height:150px;\' scrolling=\'no\' frameborder=\'no\' allow=\'autoplay\' src=\'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1495568995&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true\'></iframe>')">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/cornfield.png" alt="UF0_grnd" onclick="openModal(this, '<iframe style=\'width:min(80vw, 800px); height:150px;\' scrolling=\'no\' frameborder=\'no\' allow=\'autoplay\' src=\'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1451619487&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true\'></iframe>')">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/TherumPainting1.jpeg" alt="" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/TherumPainting3.jpeg" alt="" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/TherumPainting2.jpeg" alt="" onclick="openModal(this)">
-            </figure> -->
-            <!-- <figure class="gallery-item">
-                <img src="gallery/SVArt2.jpg" alt="Sweet Victories / Sour Defeat [music video excerpt]" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/SVArt3.jpg" alt="Sweet Victories / Sour Defeat [music video excerpt]" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/SVArt4.jpg" alt="Sweet Victories / Sour Defeat [music video excerpt]" onclick="openModal(this)">
-            </figure>
-            <figure class="gallery-item">
-                <img src="gallery/AlbumBackArt.png" alt="Two Sunken Sons [additional-art]" onclick="openModal(this)">
-            </figure> --> 
+            <!-- Gallery items here -->
         </div>
+
         <div class="contact-info">
             <a href="mailto:therum.music@gmail.com" class="contact-link">Contact: therum.music@gmail.com</a>
         </div>
-        
     </div>
-    
 
-
-
-
-
-    <!-- The Modal -->
-<div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <div class="modal-content">
-        <img id="img01" class="modal-img">
-        <div id="caption" class="title"></div>
-        <div id="description" class="modal-description"></div>
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="img01" class="modal-img">
+            <div id="caption" class="title"></div>
+            <div id="description" class="modal-description"></div>
+        </div>
     </div>
-</div>
-
-
-
-
-
-
 
     <button id="therminal-toggle">Open Therminal</button>
     <iframe id="therminal-iframe" src="therminal.html"></iframe>
-
 
     <script src="interact.js"></script>
     <script src="therminal/therminal-iframe.js"></script>

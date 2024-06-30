@@ -2,71 +2,79 @@
 	{
 		"src": "IM_Bonus3_2x.jpg",
 		"alt": "???",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "100% center"
 	},
 	{
 		"src": "SirenFest2_1.jpg",
 		"alt": "SF_2",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center 10%"
 	},
 	{
 		"src": "SirenFest1_2.jpg",
 		"alt": "SF_1",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center 40%"
 	},
 	{
 		"src": "SirenFest1_1.jpg",
 		"alt": "SF_1",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center 50%"
 	},
 	{
 		"src": "DWUArt2.jpg",
 		"alt": "EMBRACE THE DARKLINES WITHIN US",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center"
 	},
 	{
 		"src": "DWUArt1.jpg",
 		"alt": "EMBRACE THE DARKLINES WITHIN US",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center"
 	},
 	{
 		"src": "bsodEnd.jpeg",
 		"alt": "bsod_END",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center"
 	},
 	{
 		"src": "cornfield.png",
 		"alt": "UF0_grnd",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center"
 	},
 	{
 		"src": "TherumPainting1.jpeg",
 		"alt": "",
-		"modalContent": ""
-	},
-	{
-		"src": "TherumPainting3.jpeg",
-		"alt": "",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center 30%"
 	},
 	{
 		"src": "SVArt2.jpg",
 		"alt": "Sweet Victories / Sour Defeat [music video excerpt]",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center"
 	},
 	{
 		"src": "SVArt3.jpg",
 		"alt": "Sweet Victories / Sour Defeat [music video excerpt]",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center"
 	},
 	{
 		"src": "SVArt4.jpg",
 		"alt": "Sweet Victories / Sour Defeat [music video excerpt]",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center"
 	},
 	{
 		"src": "AlbumBackArt.png",
 		"alt": "Two Sunken Sons [additional-art]",
-		"modalContent": ""
+		"modalContent": "",
+		"offset": "center"
 	}
 ]

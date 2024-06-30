@@ -1,75 +1,76 @@
 * {
     box-sizing: border-box;
-  }
-
-.title {
-    max-width: 80%;
-    font-size: 3em;
-    margin-bottom: 20px;
 }
 
-.headline-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-}
-
-.headline-section iframe {
-    max-width: 80%;
-}
-.headline-section h1 {
-    font-size: 3em; /* Maximum text size */
-}
-
-/* If the screen size is less than 600px, adjust the font size */
-@media only screen and (max-width: 600px) {
-    .headline-section h1 {
-        font-size: 2em;
-    }
-}
-
-/* If the screen size is less than 400px, adjust the font size further */
-@media only screen and (max-width: 400px) {
-    .headline-section h1 {
-        font-size: 1.5em;
-    }
+:root {
+    --primary-color: #0f0;
+    --background-color: #000;
+    --text-color: #fff;
+    --accent-color: #333;
 }
 
 body {
-    background-color: black;
-    color: white;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin: 0;
-    margin-bottom: 100px;
-    padding: 0;
-    font-family: 'Exo 2', sans-serif;
-    overflow: auto;
 }
 
 .content {
-    max-width: 100%; /* Maximum width is the larger value between 80% of viewport and 2000px */
-    margin: auto; /* Center the content */
-}
-@media screen and (min-width: 1800px) {
-    .content {
-        max-width: 80%; /* If the viewport is larger than 2500px, set max-width to 2000px */
-    }
+    width: 100%;
+    max-width: 1600px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.title {
+    max-width: 60%;
+    height: auto;
+    margin-bottom: 2rem;
+}
 
+.headline-section {
+    text-align: center;
+ 
+    width: 100%;
+}
+
+.headline-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.redirect-button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    width: min(100%, 800px);
+    border-radius: 5px;
+    padding: 2rem 2rem;    
+    font-size: 2rem;
+    font-family: 'Exo 2', sans-serif;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.redirect-button:hover {
+    box-shadow: 0 0 20px var(--primary-color);
+}
 
 .video-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
     position: relative;
-    overflow: hidden;
-    width: min(80%, 1400px); /* Video should be about 30% smaller than the gallery */
-    padding-top: min(50%, 800px); /* Adjusted aspect ratio (70% of 56.25%) */
-    margin: auto; /* To center the video */
+    padding-top: 42.1875%; /* 16:9 aspect ratio for 1200px width */
 }
 
 .video-wrapper iframe {
@@ -80,51 +81,42 @@ body {
     height: 100%;
 }
 
-h2 {
-    font-family: 'Exo 2', sans-serif;
+h2, h3 {
+    font-size: 2.5rem;
     text-align: center;
-    font-size: calc(1.5em + 1vw);
-}
-
-h3 {
-    font-family: 'Exo 2', sans-serif;
-    text-align: center;
-    font-size: calc(1em + 1vw);
+    margin: 2rem 0;
 }
 
 .gallery, .album_gallery {
-    display: grid; /* Using grid layout */
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 2%; /* Control your border size here */
-    padding: 10px; /* Edge Padding */
-    box-sizing: border-box; /* This makes sure that the padding is included in .gallery's total width */
-    width: 80%;
-    margin: 0 auto;
-    justify-content: center; /* New line added */
+    gap: 0.5rem;
+    width: 100%;
+    margin-bottom: 2rem;
 }
-
 
 .gallery-item {
-  display: flex; /* Using Flexbox for centering the images */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+    position:relative;
+    width: 100%;
+    padding-top: 100%; /* Create a 1:1 aspect ratio container */
+    margin-left: auto;
+    overflow: hidden;
 }
-
 
 .gallery img, .album_gallery img {
-    max-width: 150%; /* Two images per row with spacing around */
-    max-height: 150%;  /* Maximum height */
-    object-fit: cover;  /* Maintain aspect ratio */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--object-position, center); /* Use custom property with fallback */
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-@media screen and (max-width: 600px) {
-    .gallery img, .album_gallery img {
-        max-height: 200px;  /* Smaller maximum height for smaller screens */
-    }
-    .newsletter-signup {
-        padding-top: 100px;  /* Add some space at the top of the newsletter signup section */
-    }
+.gallery img:hover, .album_gallery img:hover {
+    transform: scale(1.05);
 }
 
 .modal {
@@ -173,148 +165,155 @@ h3 {
     border-radius: 5px; /* Roundness of the corners */
 }
 
-
 #caption {
-    font-size: calc(2em + 1vw);
-    padding-top: 10px;
-    font-family: 'Exo 2', sans-serif;
-}
-
-#description {
-    /* other styles */
-    margin-bottom: 20%; /* Adjust this value as per your requirement */
+    font-size: 1.75rem;
+    padding-top: 1rem;
 }
 
 .close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
+    color: var(--text-color);
+    font-size: 2.5rem;
     font-weight: bold;
-    transition: 0.3s;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    cursor: pointer;
 }
 
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-.description {
-    color: #fff;
-    padding: 15px;
-    margin: 10px auto;
-    border-radius: 10px;
-    width: 80%;
-    --shrunk-height: 200px;
-    max-height: var(--shrunk-height);
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
-    cursor: pointer;
-    background-color: #222;
-    font-family: 'Exo 2', sans-serif;
-    font-size: calc(1em + 0.2vw); /* NEW FONT SIZE PROPERTY */
-}
 .social-links {
-  display: flex;
-  justify-content: center;
-  gap: 6%; /* adjust gap between icons here */
-  margin-bottom: 35px; /* adjust space after the icons here */
+    display: flex;
+    justify-content: center;
+    gap: min(5vw, 20%);
+    margin-bottom: 2rem;
 }
 
 .social-links a {
-  color: white; /* change color as needed */
-  font-size: 300%; /* adjust size of icons */
-  text-decoration: none;
+    color: var(--text-color);
+    font-size: 3.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.newsletter-signup {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.newsletter-signup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.newsletter-signup input[type="email"],
+.newsletter-signup button {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.newsletter-signup input[type="email"] {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.newsletter-signup button {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.newsletter-signup button:hover {
+    opacity: 0.9;
+}
+
+.newsletter-signup .caption {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 1rem;
+}
 
 .contact-info {
-    background-color: rgba(0,0,0,0.8); /* Dark Backbround */
-    color: #fff; /* White Text */
-    font-family: 'Exo 2', sans-serif; /* Font Family */
-    padding: 20px; /* Padding around text */
-    text-align: center; /* Centering the text */
-    /* position: fixed; Fixing the position */
-    bottom: 0; /* Position at Bottom */
-    width: 100%; /* Full Width */
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--accent-color);
+    width: 100%;
+    margin-top: auto;
 }
 
 .contact-link {
-    color: #fff; /* White links */
-    text-decoration: none; /* Removing underline from links */
-    margin-right: 10px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1.25rem;
 }
 
 .contact-link:hover {
-    color: #ddd; /* Lighter color on hover */
+    color: var(--primary-color);
 }
 
-/* Styling the newsletter sign-up div */
-.newsletter-signup {
-    text-align: center;
-    font-family: 'Exo 2', sans-serif;
-    width: 80%; /* Adjust as needed */
-    margin: auto; /* Center the element horizontally */
-    border: 2px solid #000; /* Black border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 1em; /* Padding inside border */
-    padding-top: max(0.5%, 100px); /* Adjust as needed */
+@media (max-width: 1200px) {
+    .content {
+        max-width: 95%;
+    }
+
+    .video-wrapper {
+        max-width: 100%;
+        padding-top: 56.25%; /* Reset to standard 16:9 aspect ratio */
+    }
 }
 
-/* Styling the input fields and button */
-.newsletter-signup form input[type="email"],
-.newsletter-signup form button {
-    background-color: #444; /* Darker color */
-    color: white; /* White text */
-    border-radius: 5px; /* Rounded corners */
-    border: none; /* Removes default borders */
-    padding: 1vw; /* Responsive padding */
-    margin-top: 1vw; /* Responsive top margin */
-    font-size: calc(1em + 1vw); /* Responsive font size */
-    font-family: 'Exo 2', sans-serif;
-  /*  width: 70%; /* Occupies 70% width of the parent div */
-    max-width: max(70%, 300px); /* Adjust as needed */
-    display: inline-block; /* Allows the elements to be on the same line at larger screen sizes */
+@media (max-width: 768px) {
+    .content {
+        padding: 1rem;
+    }
+
+    .headline-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .redirect-button {
+        font-size: 1.25rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    h2, h3 {
+        font-size: 2rem;
+    }
+
+    .gallery, .album_gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .social-links a {
+        font-size: 2rem;
+    }
 }
 
-/* Adding some hover effect for the button */
-.newsletter-signup form button:hover {
-    opacity: 0.9; /* Reduce opacity on hover */
-    cursor: pointer;
-}
+@media (max-width: 480px) {
+    .headline-section h1 {
+        font-size: 2rem;
+    }
 
-/* Styling the caption */
-.newsletter-signup .caption {
-    font-size: calc(0.8em + 0.5vw); /* Responsive font size */
-    color: #666; /* Caption text color */
-    max-width: 90%; /* Limit width */
-    margin: 1em auto; /* Centering and space above and below */
-    line-height: 1.4; /* Adjusts the vertical spacing between lines of text */
-}
+    .gallery, .album_gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
 
-/*CSS*/
-.newsletter-signup form button.disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-/* Additional CSS for the redirect button */
-.redirect-button {
-    background-color: #333; /* Dark grey color */
-    color: #00FF00; /* Green text */
-    border-radius: 5px; /* Rounded corners */
-    border: none; /* Removes default borders */
-    padding: 1vw 2vw; /* Responsive padding (vertical horizontal) */
-    margin-top: 20px; /* Space above the button */
-    margin-bottom: 1.5vh;
-    font-size: calc(1em + 1vw); /* Responsive font size */
-    font-family: 'Exo 2', sans-serif;
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for the glow */
-    width: 46%;
-}
-
-.redirect-button:hover {
-    box-shadow: 0 0 15px #00FF00; /* Green glow effect */
+    .social-links a {
+        font-size: 1.75rem;
+    }
 }
