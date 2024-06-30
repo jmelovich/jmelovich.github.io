@@ -90,40 +90,36 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('.newsletter-signup form element not found');
     }
 
-    // Fetch the list of images from the JSON file
-    fetch('gallery/gallery-list.json')
-        .then(response => response.json())
-        .then(imageData => {
-            const gallery = document.querySelector('.gallery');
-            if (!gallery) {
-                console.error('.gallery element not found');
-                return;
-            }
-            
-            imageData.forEach(data => {
-                // Create figure and img elements
-                const figure = document.createElement('figure');
-                figure.className = 'gallery-item';
-                const img = document.createElement('img');
-                img.src = `gallery/${data.src}`;
-                img.alt = data.alt; // Get alt text from the JSON object
-                img.onclick = () => openModal(img); // Assuming openModal is already defined
-                
-                // Append img to figure
-                figure.appendChild(img);
+// Fetch the list of images from the JSON file
+fetch('gallery/gallery-list.json')
+    .then(response => response.json())
+    .then(imageData => {
+        const gallery = document.querySelector('.gallery');
+        if (!gallery) {
+            console.error('.gallery element not found');
+            return;
+        }
 
-                // Insert figure at the beginning of the gallery div
-                const firstChild = gallery.firstChild;
-                if(firstChild) {
-                    gallery.insertBefore(figure, firstChild);
-                } else {
-                    gallery.appendChild(figure);
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching gallery list:', error);
+        imageData.forEach(data => {
+            // Create figure and img elements
+            const figure = document.createElement('figure');
+            figure.className = 'gallery-item';
+            const img = document.createElement('img');
+            img.src = `gallery/${data.src}`;
+            img.alt = data.alt; // Get alt text from the JSON object
+            img.onclick = () => openModal(img, data.modalContent); // Assuming openModal is already defined
+
+            // Append img to figure
+            figure.appendChild(img);
+
+            // Insert figure at the end of the gallery div (which effectively reverses the original order)
+            gallery.appendChild(figure);
         });
+    })
+    .catch(error => {
+        console.error('Error fetching gallery list:', error);
+    });
+
 });
 
 function openModal(element, spotifyEmbed = "") {

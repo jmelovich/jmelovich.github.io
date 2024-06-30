@@ -5,10 +5,37 @@ function handlePGPPuzzle(userInput) {
     } else if (userInput.toLowerCase() === "dl pgp") {
         downloadPGPMsg();
     } else if (userInput.toLowerCase() === correctPassword) {
-        typeWriter("Decryption successful. Access granted to BIOS.update.\n\nDownloading text-based order form...");
-        setTimeout(() => {
-            window.location.href = "../source/reffed/BIOS.update.orderform";
-        }, 3000);
+        typeWriter("Decryption successful. Access granted to BIOS.update.\n\nDownloading text-based order form...\n", () => {
+            let progress = 0;
+            const totalSteps = 20;
+            const intervalTime = 3000 / totalSteps;
+
+            // Create a new element for the progress bar
+            const progressElement = document.createElement('div');
+            output.appendChild(progressElement);
+
+            function updateProgressBar() {
+                progress++;
+                const progressBar = '[' + '='.repeat(progress) + ' '.repeat(totalSteps - progress) + ']';
+                const percentage = Math.round((progress / totalSteps) * 100);
+                
+                // Update the progress element directly
+                progressElement.textContent = `${progressBar} ${percentage}%`;
+                
+                if (progress < totalSteps) {
+                    setTimeout(updateProgressBar, intervalTime);
+                } else {
+                    setTimeout(() => {
+                        window.location.href = "../source/reffed/BIOS.update.orderform";
+                        isCompletingPGPPuzzle = false;  // Reset the flag after successful download
+                        output.removeChild(progressElement);
+                        typeWriter("\nDownload complete. Returning to main terminal.\n\n");
+                    }, intervalTime);
+                }
+            }
+
+            updateProgressBar();
+        });
     } else {
         typeWriter("Incorrect password. Decryption failed. Please try again or type 'cancel' to abort.\n\n");
     }

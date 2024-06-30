@@ -299,3 +299,22 @@ h3 {
   background-color: #ccc;
   cursor: not-allowed;
 }
+/* Additional CSS for the redirect button */
+.redirect-button {
+    background-color: #333; /* Dark grey color */
+    color: #00FF00; /* Green text */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* Removes default borders */
+    padding: 1vw 2vw; /* Responsive padding (vertical horizontal) */
+    margin-top: 20px; /* Space above the button */
+    margin-bottom: 1.5vh;
+    font-size: calc(1em + 1vw); /* Responsive font size */
+    font-family: 'Exo 2', sans-serif;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for the glow */
+    width: 46%;
+}
+
+.redirect-button:hover {
+    box-shadow: 0 0 15px #00FF00; /* Green glow effect */
+}

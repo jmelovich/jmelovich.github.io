@@ -1,6 +1,72 @@
 [
 	{
+		"src": "IM_Bonus3_2x.jpg",
+		"alt": "???",
+		"modalContent": ""
+	},
+	{
 		"src": "SirenFest2_1.jpg",
-		"alt": "Siren Fest 2"
+		"alt": "SF_2",
+		"modalContent": ""
+	},
+	{
+		"src": "SirenFest1_2.jpg",
+		"alt": "SF_1",
+		"modalContent": ""
+	},
+	{
+		"src": "SirenFest1_1.jpg",
+		"alt": "SF_1",
+		"modalContent": ""
+	},
+	{
+		"src": "DWUArt2.jpg",
+		"alt": "EMBRACE THE DARKLINES WITHIN US",
+		"modalContent": ""
+	},
+	{
+		"src": "DWUArt1.jpg",
+		"alt": "EMBRACE THE DARKLINES WITHIN US",
+		"modalContent": ""
+	},
+	{
+		"src": "bsodEnd.jpeg",
+		"alt": "bsod_END",
+		"modalContent": ""
+	},
+	{
+		"src": "cornfield.png",
+		"alt": "UF0_grnd",
+		"modalContent": ""
+	},
+	{
+		"src": "TherumPainting1.jpeg",
+		"alt": "",
+		"modalContent": ""
+	},
+	{
+		"src": "TherumPainting3.jpeg",
+		"alt": "",
+		"modalContent": ""
+	},
+	{
+		"src": "SVArt2.jpg",
+		"alt": "Sweet Victories / Sour Defeat [music video excerpt]",
+		"modalContent": ""
+	},
+	{
+		"src": "SVArt3.jpg",
+		"alt": "Sweet Victories / Sour Defeat [music video excerpt]",
+		"modalContent": ""
+	},
+	{
+		"src": "SVArt4.jpg",
+		"alt": "Sweet Victories / Sour Defeat [music video excerpt]",
+		"modalContent": ""
+	},
+	{
+		"src": "AlbumBackArt.png",
+		"alt": "Two Sunken Sons [additional-art]",
+		"modalContent": ""
 	}
 ]
