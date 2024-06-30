@@ -236,7 +236,7 @@ h3 {
     font-family: 'Exo 2', sans-serif; /* Font Family */
     padding: 20px; /* Padding around text */
     text-align: center; /* Centering the text */
-    position: fixed; /* Fixing the position */
+    /* position: fixed; Fixing the position */
     bottom: 0; /* Position at Bottom */
     width: 100%; /* Full Width */
 }

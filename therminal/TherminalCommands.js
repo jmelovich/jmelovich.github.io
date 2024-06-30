@@ -23,7 +23,8 @@ const commands = {
     - download ls: List all downloadable releases
 - about [arg]: Display information about given argument
 - clear: Clear the terminal screen
-- contact: Send a message to Therum`;
+- contact: Send a message to Therum
+    - contact info: Display Therum's contact email`;
         
             if (isInIframe) {
                 helpText += `\n- maximize: Open Therminal in full window`;
@@ -111,10 +112,14 @@ Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file
         handleDownload(args);
     },
 
-    contact: () => {
-        isContactFormActive = true;
-        contactFormStep = 1;
-        typeWriter("Please enter your name (or type 'cancel' to abort):\n");
+    contact: (args) => {
+        if (args.length > 0 && args[0].toLowerCase() === 'info') {
+            typeWriter("Contact email: therum.music@gmail.com\n\n");
+        } else {
+            isContactFormActive = true;
+            contactFormStep = 1;
+            typeWriter("Please enter your name (or type 'cancel' to abort):\n");
+        }
     },
 
 
