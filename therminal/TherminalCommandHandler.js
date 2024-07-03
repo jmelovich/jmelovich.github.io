@@ -195,3 +195,23 @@ function processPGPMessage(message) {
         typeWriter("Invalid PGP message format. Please try again or type 'cancel' to abort.\n\n");
     }
 }
+
+function downloadFile(fileUrl, fileName) {
+    // Create a new anchor element (not yet added to the DOM)
+    const anchor = document.createElement('a');
+
+    // Set the href attribute to the file URL
+    anchor.href = fileUrl;
+
+    // Specify the desired file name
+    anchor.download = fileName;
+
+    // Append the anchor to the body (this won't make it visually appear)
+    document.body.appendChild(anchor);
+
+    // Programmatically trigger a click on the anchor element
+    anchor.click();
+
+    // Remove the anchor from the body after clicking it
+    document.body.removeChild(anchor);
+}

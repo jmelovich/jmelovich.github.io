@@ -38,7 +38,6 @@ function typeWriter(text, callback, index = 0) {
     }
 }
 
-
 function executeNextCommand() {
     if (commandQueue.length > 0 && !isExecuting) {
         const nextCommand = commandQueue.shift();
@@ -49,10 +48,11 @@ function executeNextCommand() {
     }
 }
 
-
-function processCommand(userInput) {
+function processCommand(userInput, printCommand = true) {
     isExecuting = true;
-    output.innerHTML += `> ${userInput}\n\n`;
+    if(printCommand === true){
+        output.innerHTML += `> ${userInput}\n\n`;
+    }
     scrollToBottom();
 
     if (isCompletingPGPPuzzle) {
@@ -108,3 +108,21 @@ output.addEventListener('touchmove', function(e) {
 
 // Ensure scrolling works when the iframe is resized
 window.addEventListener('resize', scrollToBottom);
+
+// Function to get URL parameters
+function getUrlParameters() {
+    return new URLSearchParams(window.location.search);
+}
+
+// Process URL parameters as commands
+function processUrlCommands() {
+    const params = getUrlParameters();
+    params.forEach((value, key) => {
+        processCommand(`${key} ${value}`, false);
+    });
+}
+
+// Call the function to process URL commands on page load
+setTimeout(() => { processUrlCommands(); }, 2000);
+
+

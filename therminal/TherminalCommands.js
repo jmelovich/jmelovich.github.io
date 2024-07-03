@@ -13,6 +13,16 @@ let contactFormData = {
     message: ''
 };
 
+// Function to download a file
+function downloadFile(fileUrl, fileName) {
+    const anchor = document.createElement('a');
+    anchor.href = fileUrl;
+    anchor.download = fileName;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+}
+
 const commands = {
     help: () => {
         let helpText = `Available commands:
@@ -91,8 +101,6 @@ Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file
     },
 
     about: (args) => {
-
-
         if (args.length === 0) {
     //         typeWriter(`Available topics:\n
     // BIOS.update\n\n`);
@@ -104,9 +112,7 @@ Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file
             typeWriter(`Therminal by Therum, 2024 (awaiting BIOS.update)\n\n`);
         }
 
-
     },
-
 
     download: (args) => {
         handleDownload(args);
@@ -121,7 +127,6 @@ Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file
             typeWriter("Please enter your name (or type 'cancel' to abort):\n");
         }
     },
-
 
     clear: () => {
         output.innerHTML = "";
@@ -168,6 +173,7 @@ Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file
             }, 2000);
         }
     },
+    
     order: (args) => {
         if (args.join(" ") === "bios.update") {
             isOrderingBIOSUpdate = true;
@@ -175,5 +181,39 @@ Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file
         } else {
             typeWriter("Invalid order command. Usage: order BIOS.update\n\n");
         }
-    }
+    },
+
+// Add the new svomdl command without including it in the help menu
+svomdl: () => {
+    const fileUrls = [
+        "https://www.dropbox.com/scl/fi/z10d9r3ruegbukuzhnf3p/1.4155_tizm.wav?rlkey=66209ptct2ianl061rmx13sq9&dl=1",
+        "https://www.dropbox.com/scl/fi/itcpp85ppjc1d97hlr0v8/2.lim1n.wav?rlkey=3zslgb3r1eozo69wpzc9aqkhf&dl=1",
+        "https://www.dropbox.com/scl/fi/2raemgdrsoj11amwtmk9b/3.Uf0_grnd.wav?rlkey=q0bz9wzqo50u6zpqlj2nuruqe&dl=1",
+        "https://www.dropbox.com/scl/fi/m7v9g5gq027b19wddoct2/4.NOLsta3.wav?rlkey=07qo0vcz89wdzm6e7yzqo8qnn&dl=1",
+        "https://www.dropbox.com/scl/fi/jqqcaowp0gbse8i4p3t4v/5.reNolution.wav?rlkey=25eqlf3cfucrau20hzc25gnm0&dl=1", 
+        "https://www.dropbox.com/scl/fi/l96hz1jrnhyzf4b0huqvx/6.sovieT1.wav?rlkey=fsmicr48u8mmzjnxw8k8bwk3v&dl=1",
+        "https://www.dropbox.com/scl/fi/fantn5z933qdo700u6q8l/7.REM_fuel.wav?rlkey=kj4ncb3pfpipo6ci263sjaxpp&dl=1",
+        "https://www.dropbox.com/scl/fi/aiheb4innwvb2gpqdln7d/8.wynesellr007.wav?rlkey=r605jpymnrcwslq6m8imn3moj&dl=1",
+        "https://www.dropbox.com/scl/fi/4t2wru1ng1rxs1krhv2ue/9.9flatten.wav?rlkey=fwzihkrl9ig15aqkbcsi9vzz8&dl=1",
+        "https://www.dropbox.com/scl/fi/dj29w41ohykw2bb9e5r9c/10.null2.wav?rlkey=jyieb3x414llq91w4rv4ucgdq&dl=1",
+        "https://www.dropbox.com/scl/fi/usotgpt1hkhm54zxzgexw/11.bsod_END.wav?rlkey=svdox322jjbhqam0jvv4xu3pb&dl=1"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * fileUrls.length);
+    const fileUrl = fileUrls[randomIndex];
+    const fileName = "BIOS.update.zip"; // You may want to adjust the filename logic if different
+
+    downloadFile(fileUrl, fileName);
+
+    // typeWriter(`Downloading ${fileName} from ${fileUrl}...\n\n`);
+    // output.innerHTML = "";
+    // isExecuting = false;
+    // executeNextCommand();
+    // typeWriter(initialMessage);
+
+    setTimeout(() => {
+        window.location.href = "therminal.html";
+    }, 3000);
+}
+
 };
