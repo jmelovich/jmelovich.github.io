@@ -34,7 +34,8 @@ const commands = {
 - about [arg]: Display information about given argument
 - clear: Clear the terminal screen
 - contact: Send a message to Therum
-    - contact info: Display Therum's contact email`;
+    - contact info: Display Therum's contact email
+- BIOS.update: Enhance your perception`;
         
             if (isInIframe) {
                 helpText += `\n- maximize: Open Therminal in full window`;
