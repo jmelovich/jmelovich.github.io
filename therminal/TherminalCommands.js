@@ -77,27 +77,33 @@ ${availablePages.join("\n")}\n\n`);
         }
     },
 
+//     "bios.update": () => {
+//             isCompletingPGPPuzzle = true;
+//             fetch("therminal/pgpmsg.txt")
+//                 .then((response) => response.text())
+//                 .then((data) => {
+//                     encryptedMessage = data;
+//                     typeWriter(`Initiating BIOS.update process...
+// Worthiness demonstration required.
+// Please decrypt the following PGP message to proceed:
+
+// ${encryptedMessage}
+
+// Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file:
+// `);
+//                 })
+//                 .catch((error) => {
+//                     typeWriter(`Failed to load the encrypted message. Please try again later.\n\n`);
+//                     isCompletingPGPPuzzle = false;
+//                     isExecuting = false;
+//                     executeNextCommand();
+//                 });
+//     },
     "bios.update": () => {
-            isCompletingPGPPuzzle = true;
-            fetch("therminal/pgpmsg.txt")
-                .then((response) => response.text())
-                .then((data) => {
-                    encryptedMessage = data;
-                    typeWriter(`Initiating BIOS.update process...
-Worthiness demonstration required.
-Please decrypt the following PGP message to proceed:
+        typeWriter(`BIOS.update currently unavailable due to system error.
 
-${encryptedMessage}
-
-Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file:
+ERR: 0x39 0x2F 0x32 0x31 0x2F 0x32 0x30 0x32 0x34 {ASCII}
 `);
-                })
-                .catch((error) => {
-                    typeWriter(`Failed to load the encrypted message. Please try again later.\n\n`);
-                    isCompletingPGPPuzzle = false;
-                    isExecuting = false;
-                    executeNextCommand();
-                });
     },
 
     about: (args) => {
