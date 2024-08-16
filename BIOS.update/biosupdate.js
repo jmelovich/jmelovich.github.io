@@ -43,29 +43,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const albumData = {
         title: "BIOS.update",
-        coverArt: "IM_FinalAlbumArt_4k.jpg",
+        coverArt: "IM_FinalAlbumArt_4k_Recolor.jpg",
         albumDownloadId: "1PQn_euNX0bjQ_iuMsvSRiHtuUinvXNHR",
         gallery: [
             // Add your gallery images here
         ],
         tracks: [
-            { number: 1, title: "4155_tizm", duration: "5:29", audioSource: "https://www.dropbox.com/scl/fi/z10d9r3ruegbukuzhnf3p/1.4155_tizm.wav?rlkey=66209ptct2ianl061rmx13sq9" },
-            { number: 2, title: "Uf0_grnd", duration: "4:02", audioSource: "https://www.dropbox.com/scl/fi/2raemgdrsoj11amwtmk9b/3.Uf0_grnd.wav?rlkey=q0bz9wzqo50u6zpqlj2nuruqe" },
-            { number: 3, title: "NOLsta3", duration: "2:58", audioSource: "https://www.dropbox.com/scl/fi/m7v9g5gq027b19wddoct2/4.NOLsta3.wav?rlkey=07qo0vcz89wdzm6e7yzqo8qnn" },
-            { number: 4, title: "re_Nolution", duration: "2:09", audioSource: "https://www.dropbox.com/scl/fi/jqqcaowp0gbse8i4p3t4v/5.reNolution.wav?rlkey=25eqlf3cfucrau20hzc25gnm0" },
-            { number: 5, title: "J00LiAN", duration: "2:45", audioSource: "" },
-            { number: 6, title: "sovieT1", duration: "1:44", audioSource: "https://www.dropbox.com/scl/fi/l96hz1jrnhyzf4b0huqvx/6.sovieT1.wav?rlkey=fsmicr48u8mmzjnxw8k8bwk3v" },
-            { number: 7, title: "REM_fuel", duration: "3:21", audioSource: "https://www.dropbox.com/scl/fi/fantn5z933qdo700u6q8l/7.REM_fuel.wav?rlkey=kj4ncb3pfpipo6ci263sjaxpp" },
-            { number: 8, title: "lim1n", duration: "3:35", audioSource: "https://www.dropbox.com/scl/fi/itcpp85ppjc1d97hlr0v8/2.lim1n.wav?rlkey=3zslgb3r1eozo69wpzc9aqkhf" },
-            { number: 9, title: "wynesellr007", duration: "6:44", audioSource: "https://www.dropbox.com/scl/fi/aiheb4innwvb2gpqdln7d/8.wynesellr007.wav?rlkey=r605jpymnrcwslq6m8imn3moj" },
-            { number: 10, title: "9flatten", duration: "3:35", audioSource: "https://www.dropbox.com/scl/fi/4t2wru1ng1rxs1krhv2ue/9.9flatten.wav?rlkey=fwzihkrl9ig15aqkbcsi9vzz8" },
-            { number: 11, title: "null2", duration: "3:14", audioSource: "https://www.dropbox.com/scl/fi/dj29w41ohykw2bb9e5r9c/10.null2.wav?rlkey=jyieb3x414llq91w4rv4ucgdq" },
-            { number: 12, title: "bsod_END", duration: "9:00", audioSource: "https://www.dropbox.com/scl/fi/usotgpt1hkhm54zxzgexw/11.bsod_END.wav?rlkey=svdox322jjbhqam0jvv4xu3pb" }
+            { number: 1, title: "4155_tizm", duration: "5:29", audioSource: "https://www.dropbox.com/scl/fi/d6qf3ms2w96a1rtgjd3ph/1.4155_tizm.wav?rlkey=xhxx3saot3fadr4zk6jb22lkw&st=qymzwvy4" },
+            { number: 2, title: "Uf0_grnd", duration: "4:02", audioSource: "https://www.dropbox.com/scl/fi/pcoc4yuxbihgsr8yz2pl3/2.UF0_grnd.wav?rlkey=m9vflo8gzb8zghvee67sshtvt&st=w1k3wq03" },
+            { number: 3, title: "NOLsta3", duration: "2:58", audioSource: "https://www.dropbox.com/scl/fi/6580c1kqb9izwtgda5gqd/3.NOLsta3.wav?rlkey=0chms8pkd5rbaswmlkwh52v9l&st=5r0rs7pe" },
+            { number: 4, title: "re_Nolution", duration: "2:09", audioSource: "https://www.dropbox.com/scl/fi/jil5sfnsp1xxifsk5ogtx/4.re_Nolution.wav?rlkey=qir3e2tib8or3m6kv0w4yb8tw&st=jemrtzr3" },
+            { number: 5, title: "J00LiAN", duration: "2:45", audioSource: "https://www.dropbox.com/scl/fi/gkwa58d53kuk78bqod0tu/5.J00LiAN.wav?rlkey=6n9c6ma1t59uw8xiwpi3k3opq&st=1v7hir36" },
+            { number: 6, title: "sovieT1", duration: "1:44", audioSource: "https://www.dropbox.com/scl/fi/8nxgzd0i5jvitau80tn79/6.sovieT1.wav?rlkey=t1hhz2dmv3vmzxltj044q0icw&st=ystow1o6" },
+            { number: 7, title: "REM_fuel", duration: "3:21", audioSource: "https://www.dropbox.com/scl/fi/zvec6g7tlfoigj1lhiq76/7.REM_fuel.wav?rlkey=pax3mxcjp8fm7i5hpeqcw8a23&st=zx52f7ro" },
+            { number: 8, title: "lim1n", duration: "3:35", audioSource: "https://www.dropbox.com/scl/fi/j81laask6ru52uh7x3qxi/8.lim1nl.wav?rlkey=nf3h4wgks59xzae3pql7h9n8n&st=basuwedf" },
+            { number: 9, title: "wynesellr007", duration: "6:44", audioSource: "https://www.dropbox.com/scl/fi/af04138kgomaig7wbd6a7/9.wynesellr007.wav?rlkey=eskthnquwifyp8qdp66o417ez&st=wrogki1b" },
+            { number: 10, title: "9flatten", duration: "3:35", audioSource: "https://www.dropbox.com/scl/fi/8jl0cq8avu7kik5unoyc9/10.9flatten.wav?rlkey=2zu0ypl69nxyp7qkxmqefmgal&st=7i9qtyhn" },
+            { number: 11, title: "null2", duration: "3:14", audioSource: "https://www.dropbox.com/scl/fi/jw913a6b3dplad6ns8j7a/11.null2.wav?rlkey=zvneji0jhlmmgbs5klzu93gzu&st=wgducryc" },
+            { number: 12, title: "bsod_END", duration: "9:00", audioSource: "https://www.dropbox.com/scl/fi/rb8qqp4abn32kz9lqd523/12.bsod_END.wav?rlkey=wyd49ssbpn7vye7oyg63fxpy2&st=sj3n3z79" }
         ]
     };
 
     const downloadAlbumBtn = document.getElementById('downloadAlbumBtn');
-    downloadAlbumBtn.href = `https://www.dropbox.com/scl/fi/tes3jx2avrt6fdbeiovcz/BIOS.update.zip?rlkey=p6vo4y881y96ny3daf0qquebz&dl=1`;
+    downloadAlbumBtn.href = `https://storage.googleapis.com/therum-website-lts/bios.update/BIOS.update.24b.zip`;
 
     document.querySelector('.album-title').textContent = albumData.title;
     document.querySelector('.album-art img').src = albumData.coverArt;
