@@ -1,45 +1,125 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const backgroundImages = [
-        'IM_Bonus1_4x.jpg',
-        'IM_Bonus2_4x.jpg',
-        'IM_Bonus3_4x.jpg',
-        'IM_Bonus4_4x.jpg',
-        'IM_Bonus5_4x.jpg',
-    ];
+        const backgroundImages = [
+            'IM_Bonus1_4x.jpg',
+            'IM_Bonus2_4x.jpg',
+            'IM_Bonus3_4x.jpg',
+            'IM_Bonus4_4x.jpg',
+            'IM_Bonus5_4x.jpg',
+        ];
+    
+        function setRandomBackground() {
+            const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+            const selectedImage = backgroundImages[randomIndex];
+            document.querySelector('.background-container').style.backgroundImage = `url('${selectedImage}')`;
+            document.querySelector('.background-container').style.backgroundPositionY = `${0}px`;
+        }
+    
+        setRandomBackground();
+    
+        const backgroundContainer = document.querySelector('.background-container');
+        let scrollPosition = window.pageYOffset;
+        let imageScrollSpeed = 0.1;
+    
+    // Matrix rain effect
+    const matrixRain = document.createElement('div');
+    matrixRain.className = 'matrix-rain';
+    document.body.insertBefore(matrixRain, document.body.firstChild);
 
-    function setRandomBackground() {
-        const randomIndex = Math.floor(Math.random() * backgroundImages.length);
-        const selectedImage = backgroundImages[randomIndex];
-        document.querySelector('.background-container').style.backgroundImage = `url('${selectedImage}')`;
-        document.querySelector('.background-container').style.backgroundPositionY = `${0}px`;
-    }
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    matrixRain.appendChild(canvas);
 
-    setRandomBackground();
+    let matrixCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
+    matrixCharacters = matrixCharacters.split('');
 
-    const backgroundContainer = document.querySelector('.background-container');
-    let scrollPosition = window.pageYOffset;
-    let imageScrollSpeed = 0.1;
+    let fontSize = 16;
+    let columns = canvas.width / fontSize;
+    let drops = [];
 
-    function parallaxEffect() {
-        const currentScrollPosition = window.scrollY;
-        const scrollDifference = currentScrollPosition - scrollPosition;
-        const newBackgroundPosition = parseFloat(getComputedStyle(backgroundContainer).backgroundPositionY) - (scrollDifference * imageScrollSpeed);
+    // Add a speed control variable (lower value = slower speed)
+    let fallSpeed = 3; // Adjust this value to control the speed
 
-        backgroundContainer.style.backgroundPositionY = `${newBackgroundPosition}px`;
-        scrollPosition = currentScrollPosition;
-    }
-
-    let throttleTimeout = null;
-    function throttledParallax() {
-        if (!throttleTimeout) {
-            throttleTimeout = requestAnimationFrame(() => {
-                parallaxEffect();
-                throttleTimeout = null;
-            });
+    function initializeMatrixRain() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = canvas.width / fontSize;
+        drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = {
+                y: Math.random() * canvas.height,
+                length: Math.floor(Math.random() * 25) + 10,
+                speed: (Math.random() * 0.5 + 0.5) * fallSpeed
+            };
         }
     }
 
-    window.addEventListener('scroll', throttledParallax);
+    function drawMatrixRain() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < columns; i++) {
+            let drop = drops[i];
+            
+            // Draw the trail
+            for (let j = 0; j < drop.length; j++) {
+                const y = drop.y - j * fontSize;
+                const opacity = (1 - (j / drop.length)) * 0.8;
+              //  const text = matrixCharacters[Math.floor(Math.random() * matrixCharacters.length)];
+                const text = String.fromCharCode(Math.random() * 128);
+                
+                ctx.fillStyle = `rgba(0, 255, 0, ${opacity})`;
+                ctx.font = fontSize + 'px monospace';
+                ctx.fillText(text, i * fontSize, y);
+            }
+
+            // Update drop position
+            drop.y += drop.speed;
+
+            // Reset drop when it goes off screen
+            if (drop.y > canvas.height + drop.length * fontSize) {
+                drop.y = -drop.length * fontSize;
+                drop.length = Math.floor(Math.random() * 25) + 10;
+                drop.speed = (Math.random() * 0.5 + 1) * fallSpeed;
+            }
+        }
+    }
+
+    initializeMatrixRain();
+
+    function animate() {
+        drawMatrixRain();
+        requestAnimationFrame(animate);
+    }
+    animate();
+    
+        function parallaxEffect() {
+            const currentScrollPosition = window.scrollY;
+            const scrollDifference = currentScrollPosition - scrollPosition;
+            const newBackgroundPosition = parseFloat(getComputedStyle(backgroundContainer).backgroundPositionY) - (scrollDifference * imageScrollSpeed);
+    
+            backgroundContainer.style.backgroundPositionY = `${newBackgroundPosition}px`;
+            canvas.style.transform = `translateY(${newBackgroundPosition}px)`;
+            scrollPosition = currentScrollPosition;
+        }
+    
+        let throttleTimeout = null;
+        function throttledParallax() {
+            if (!throttleTimeout) {
+                throttleTimeout = requestAnimationFrame(() => {
+                    parallaxEffect();
+                    throttleTimeout = null;
+                });
+            }
+        }
+    
+        window.addEventListener('scroll', throttledParallax);
+    
+        function handleResize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initializeMatrixRain();
+        }
+    
+        window.addEventListener('resize', handleResize);
 
     const albumData = {
         title: "BIOS.update",
