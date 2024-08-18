@@ -52,6 +52,7 @@ html, body {
     top: 0;
     left: 0;
     will-change: transform;
+    height: 120%;
 }
 
 .content {

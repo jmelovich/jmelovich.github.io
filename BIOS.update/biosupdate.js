@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let matrixCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
     matrixCharacters = matrixCharacters.split('');
 
-    let fontSize = 16;
+    let fontSize = 14;
     let columns = canvas.width / fontSize;
     let drops = [];
 
