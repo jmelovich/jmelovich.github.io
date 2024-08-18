@@ -52,7 +52,7 @@ const commands = {
             typeWriter(`Available pages:
 ${availablePages.join("\n")}\n\n`);
         } else {
-            const page = args.join(" ").toLowerCase();
+            const page = args.join(" ").trim().toLowerCase();
             if (availablePages.map((p) => p.toLowerCase()).includes(page)) {
                 let pageIndex = availablePages.map(p => p.toLowerCase()).indexOf(page);
                 let pageLink = availablePageLinks[pageIndex];
@@ -72,6 +72,11 @@ ${availablePages.join("\n")}\n\n`);
                         window.location.href = pageLink;
                     }, 2000);
                 }
+            } else if (page === "bios.update"){
+                typeWriter(`Navigating to ${page}...\n\n`);
+                setTimeout(() => {
+                    window.location.href = "BIOS.update/bios.update.html";
+                }, 2000);
             } else {
                 typeWriter(`Error: Page '${page}' not found. Use 'ls' to see available pages.\n\n`);
             }
