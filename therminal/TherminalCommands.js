@@ -1,8 +1,8 @@
-// const availablePages = ["home", "BIOS.update.landing"];
-// const availablePageLinks = ["index.html", "BIOS.update/BIOS.update.html"];
+const availablePages = ["home", "BIOS.update.landing"];
+const availablePageLinks = ["index.html", "BIOS.update/BIOS.update.html"];
 
-const availablePages = ["home"];
-const availablePageLinks = ["index.html"];
+// const availablePages = ["home"];
+// const availablePageLinks = ["index.html"];
 
 // Add these variables at the top of the file
 let isContactFormActive = false;
@@ -12,6 +12,7 @@ let contactFormData = {
     email: '',
     message: ''
 };
+let currentAudio = null;
 
 // Function to download a file
 function downloadFile(fileUrl, fileName) {
@@ -35,7 +36,8 @@ const commands = {
 - clear: Clear the terminal screen
 - contact: Send a message to Therum
     - contact info: Display Therum's contact email
-- BIOS.update: Enhance your perception`;
+- BIOS.update: Enhance your perception
+- wip [list|get|play|stop]: Work in progress songs management`;
         
             if (isInIframe) {
                 helpText += `\n- maximize: Open Therminal in full window`;
@@ -82,29 +84,6 @@ ${availablePages.join("\n")}\n\n`);
             }
         }
     },
-
-//     "bios.update": () => {
-//             isCompletingPGPPuzzle = true;
-//             fetch("therminal/pgpmsg.txt")
-//                 .then((response) => response.text())
-//                 .then((data) => {
-//                     encryptedMessage = data;
-//                     typeWriter(`Initiating BIOS.update process...
-// Worthiness demonstration required.
-// Please decrypt the following PGP message to proceed:
-
-// ${encryptedMessage}
-
-// Enter the decrypted password or type 'dl pgp' to download the PGP encrypted file:
-// `);
-//                 })
-//                 .catch((error) => {
-//                     typeWriter(`Failed to load the encrypted message. Please try again later.\n\n`);
-//                     isCompletingPGPPuzzle = false;
-//                     isExecuting = false;
-//                     executeNextCommand();
-//                 });
-//     },
     "bios.update": () => {
         typeWriter(`BIOS.update currently unavailable due to system error.
 
@@ -129,6 +108,95 @@ ERR: 0x39 0x2F 0x32 0x31 0x2F 0x32 0x30 0x32 0x34 {ASCII}
     download: (args) => {
         handleDownload(args);
     },
+
+    wip: (args) => {
+        if (args.length === 0) {
+            typeWriter("Error: Missing argument for 'wip' command.\nUsage: wip [list|get|play|stop] [filename]\n\n");
+            return;
+        }
+
+        const command = args[0].toLowerCase();
+        let url = "https://us-east1-therum-426822.cloudfunctions.net/get-wip-songs?command=";
+
+        if (command === "list") {
+            url += "list";
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.files && Array.isArray(data.files)) {
+                        const fileNames = data.files.map(file => {
+                            const nameWithoutExtension = file.name.split('.').slice(0, -1).join('.');
+                            return nameWithoutExtension;
+                        });
+                        typeWriter(`List of files:\n${fileNames.join("\n")}\n\n`);
+                    } else {
+                        typeWriter("No files found.\n\n");
+                    }
+                })
+                .catch(error => {
+                    typeWriter(`Error fetching list: ${error.message}\n\n`);
+                });
+        } else if ((command === "get" || command === "play") && args[1]) {
+            const filename = args.slice(1).join(" ");
+            url += `get&filename=${encodeURIComponent(filename)}.wav`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.url) {
+                        fetch(data.url)
+                            .then(fileResponse => {
+                                if (!fileResponse.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                return fileResponse.blob();
+                            })
+                            .then(blob => {
+                                if (command === "get") {
+                                    const link = document.createElement('a');
+                                    link.href = window.URL.createObjectURL(blob);
+                                    link.download = filename;
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    link.remove();
+                                    typeWriter(`File "${filename}" downloaded successfully.\n\n`);
+                                } else if (command === "play") {
+                                    if (currentAudio) {
+                                        currentAudio.pause();
+                                        currentAudio = null;
+                                    }
+                                    const audioUrl = window.URL.createObjectURL(blob);
+                                    currentAudio = new Audio(audioUrl);
+                                    currentAudio.play().then(() => {
+                                        typeWriter(`Playing "${filename}".\n\n`);
+                                    }).catch(error => {
+                                        typeWriter(`Error playing audio: ${error.message}\n\n`);
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                typeWriter(`Error processing file: ${error.message}\n\n`);
+                            });
+                    } else {
+                        typeWriter("Error: No URL found in response.\n\n");
+                    }
+                })
+                .catch(error => {
+                    typeWriter(`Error fetching file details: ${error.message}\n\n`);
+                });
+        } else if (command === "stop") {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio = null;
+                typeWriter("Audio stopped.\n\n");
+            } else {
+                typeWriter("No audio is currently playing.\n\n");
+            }
+        } else {
+            typeWriter("Error: Invalid usage of 'wip' command.\nUsage: wip [list|get|play|stop] [filename]\n\n");
+        }
+    },
+
+
 
     contact: (args) => {
         if (args.length > 0 && args[0].toLowerCase() === 'info') {
