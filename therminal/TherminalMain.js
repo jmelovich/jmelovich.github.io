@@ -119,6 +119,8 @@ function processUrlCommands() {
     const params = getUrlParameters();
     params.forEach((value, key) => {
         processCommand(`${key} ${value}`, false);
+        //print to console
+        console.log(`${key} ${value}`);
     });
 }
 

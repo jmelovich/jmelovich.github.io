@@ -1,9 +1,6 @@
 const availablePages = ["home", "BIOS.update.landing"];
 const availablePageLinks = ["index.html", "BIOS.update/BIOS.update.html"];
 
-// const availablePages = ["home"];
-// const availablePageLinks = ["index.html"];
-
 // Add these variables at the top of the file
 let isContactFormActive = false;
 let contactFormStep = 0;
@@ -137,7 +134,7 @@ ERR: 0x39 0x2F 0x32 0x31 0x2F 0x32 0x30 0x32 0x34 {ASCII}
                     typeWriter(`Error fetching list: ${error.message}\n\n`);
                 });
         } else if ((command === "get" || command === "play") && args[1]) {
-            const filename = args.slice(1).join(" ");
+            const filename = args.slice(1).join("");
             url += `get&filename=${encodeURIComponent(filename)}.wav`;
             fetch(url)
                 .then(response => response.json())
