@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', function(event) {
         if (event.key === "Escape" && modal.style.display === "block") {
             modal.style.display = "none";
+            // Pause any playing videos when closing the modal
+            var modalVideo = document.querySelector('.modal-content video');
+            if (modalVideo) {
+                modalVideo.pause();
+            }
         }
     });
 
@@ -116,6 +121,24 @@ fetch('gallery/gallery-list.json')
         console.error('Error fetching gallery list:', error);
     });
 
+    // Add event listeners to ensure videos play properly
+    document.querySelectorAll('video').forEach(video => {
+        video.addEventListener('error', function(e) {
+            console.error('Video error:', e);
+            // If video fails to load, show the poster image
+            if (this.hasAttribute('poster')) {
+                this.style.backgroundImage = `url(${this.getAttribute('poster')})`;
+                this.style.backgroundSize = 'cover';
+                this.style.backgroundPosition = 'center';
+            }
+        });
+        
+        // Try to play the video after page load
+        video.addEventListener('loadeddata', function() {
+            this.play().catch(e => console.warn('Could not autoplay on load:', e));
+        });
+    });
+
 });
 
 function openModal(element, spotifyEmbed = "") {
@@ -130,8 +153,50 @@ function openModal(element, spotifyEmbed = "") {
     }
 
     modal.style.display = "block";
-    modalImg.src = element.src;
-    captionText.innerHTML = element.alt;
+    
+    // Handle video or image based on element type
+    if (element.tagName.toLowerCase() === 'video') {
+        // Create a video element if the clicked element is a video
+        if (modalImg.tagName.toLowerCase() !== 'video') {
+            // Replace the img with a video element
+            var modalVideo = document.createElement('video');
+            modalVideo.id = "img01";
+            modalVideo.className = "modal-img";
+            modalVideo.autoplay = true;
+            modalVideo.loop = true;
+            modalVideo.muted = true;
+            modalVideo.playsInline = true;
+            // Removed controls to make it appear more like an image
+            
+            // If the original video has a poster, use it
+            if (element.hasAttribute('poster')) {
+                modalVideo.poster = element.getAttribute('poster');
+            }
+            
+            modalImg.parentNode.replaceChild(modalVideo, modalImg);
+            modalImg = modalVideo;
+        }
+        modalImg.src = element.src;
+        
+        // Ensure the video starts playing in the modal
+        modalImg.play().catch(e => {
+            console.error('Failed to play video:', e);
+        });
+    } else {
+        // If the clicked element is an image but modal has a video
+        if (modalImg.tagName.toLowerCase() === 'video') {
+            // Replace the video with an img element
+            var newModalImg = document.createElement('img');
+            newModalImg.id = "img01";
+            newModalImg.className = "modal-img";
+            modalImg.parentNode.replaceChild(newModalImg, modalImg);
+            modalImg = newModalImg;
+        }
+        modalImg.src = element.src;
+    }
+    
+    // Use getAttribute to avoid undefined when alt is not present
+    captionText.innerHTML = element.getAttribute('alt') || '';
 
     if (spotifyEmbed !== "") {
         descriptionText.innerHTML = spotifyEmbed;
@@ -143,6 +208,11 @@ function openModal(element, spotifyEmbed = "") {
     if (span) {
         span.onclick = function() { 
             modal.style.display = "none";
+            // Pause any playing videos when closing the modal
+            var modalVideo = document.querySelector('.modal-content video');
+            if (modalVideo) {
+                modalVideo.pause();
+            }
         };
     } else {
         console.error('.close span element not found in openModal');

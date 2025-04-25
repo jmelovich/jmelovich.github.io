@@ -25,23 +25,23 @@
         </div>
 
         <div class="headline-section">
-            <h1>CRITICAL BIOS.UPDATE REQUIRED</h1>
-            <button class="redirect-button" onclick="window.location.href='BIOS.update/bios.update.html'">AUDITORY INSTALL</button>
-            <h2>PLEASE UPDATE AS SOON AS POSSIBLE</h2>
+            <h1>MAVEN /\ 5.1.25</h1>
+            <button class="redirect-button" onclick="window.location.href='https://gyro.to/MAVEN'">PRE-SAVE MAVEN</button>
         </div>  
 
 
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/xs1fRAFCAug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+
 
         <h2>Discography</h2>
         <div class="album_gallery">
             <figure class="gallery-item">
+                <video id="maven-video" src="https://storage.googleapis.com/therum-website-lts/art/maven_animate_4_comp.mp4" poster="discography/gallery/Maven.jpg" alt="MAVEN - 2025" autoplay loop muted playsinline preload="auto" onclick="openModal(this)" class="gallery-video"></video>
+            </figure>
+            <figure class="gallery-item">
                 <img src="BIOS.update/IM_FinalAlbumArt_4k_Recolor.jpg" alt="BIOS.update - 2024" onclick="window.location.href='BIOS.update/bios.update.html'">
             </figure>
             <figure class="gallery-item">
-                <img src="discography/gallery/AetherumCutsArt-4k.jpeg" alt="Aetherum Cuts - 2024" onclick="openModal(this)">
+                <img src="discography/gallery/AetherumCutsArt-4k.jpeg" alt="Aetherum Cuts - 2024" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/1T2YWVcZ11Lyj0TSXU04A4?utm_source=generator&theme=0\' style=\'width:min(800px, 80vw); height:28vh; \' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
             </figure>
             <figure class="gallery-item">
                 <img src="discography/gallery/DarklinesWithinUs.jpg" alt="Darklines Within Us - 2023" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/3p9SEBWbwhPabhYlECaj2d\' style=\'width:min(800px, 80vw); height:45vh; \' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
@@ -59,7 +59,10 @@
                 <img src="discography/gallery/TwoSunkenSons.jpg" alt="Two Sunken Sons - 2021" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/2oX2lq1AH0l81vPCsveBAc\' style=\'width:min(800px, 80vw); height:60vh;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
             </figure>
         </div>
-
+        
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/xs1fRAFCAug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
 
         <h3>The Gallery</h3>
         <div class="gallery">
@@ -103,6 +106,18 @@
                 if (therminalToggle) {
                     therminalToggle.click();
                 }
+            }
+            
+            // Force play the video on page load
+            const mavenVideo = document.getElementById('maven-video');
+            if (mavenVideo) {
+                mavenVideo.play().catch(e => {
+                    console.warn('Could not autoplay Maven video:', e);
+                    // Try again after a user interaction
+                    document.body.addEventListener('click', function() {
+                        mavenVideo.play().catch(e => console.error('Still could not play video:', e));
+                    }, { once: true });
+                });
             }
         });
     </script>

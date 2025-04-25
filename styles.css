@@ -96,14 +96,19 @@ h2, h3 {
 }
 
 .gallery-item {
-    position:relative;
+    position: relative;
     width: 100%;
     padding-top: 100%; /* Create a 1:1 aspect ratio container */
     margin-left: auto;
     overflow: hidden;
 }
 
-.gallery img, .album_gallery img {
+/* Additional style for gallery items that contain videos */
+.gallery-item:has(video) {
+    background-color: transparent;
+}
+
+.gallery img, .album_gallery img, .gallery-video, .album_gallery video {
     position: absolute;
     top: 0;
     left: 0;
@@ -113,9 +118,17 @@ h2, h3 {
     object-position: var(--object-position, center); /* Use custom property with fallback */
     cursor: pointer;
     transition: transform 0.3s ease;
+    background-color: transparent; /* Changed from #000 to transparent */
 }
 
-.gallery img:hover, .album_gallery img:hover {
+/* Specific styling for video in the gallery to ensure it's visible */
+.gallery-video, .album_gallery video {
+    display: block; /* Ensure it's a block element */
+    background: transparent; /* Changed from #000 to transparent */
+    filter: brightness(1.0); /* Ensure full brightness */
+}
+
+.gallery img:hover, .album_gallery img:hover, .gallery-video:hover, .album_gallery video:hover {
     transform: scale(1.05);
 }
 
@@ -141,16 +154,22 @@ h2, h3 {
     margin: auto;
     width: 80%;
     max-width: 80vw;
-
-    
+    background-color: transparent;
+    position: relative;
+    z-index: 2; /* Ensure it's above any potential background overlay */
 }
 
-.modal-content img {
+.modal-content img, .modal-content video {
    max-width: 100%;
    height: auto;
-   /* Add the following line */
    max-height: 70vh;
    object-fit: contain;
+   background-color: transparent;
+   filter: brightness(1.0);
+}
+
+.modal-content video::-webkit-media-controls {
+   display: none;
 }
 
 .modal-description {
@@ -316,4 +335,9 @@ h2, h3 {
     .social-links a {
         font-size: 1.75rem;
     }
+}
+
+/* Add specific brightness setting for videos in modal */
+.modal video.modal-img {
+    filter: brightness(1.0);
 }
