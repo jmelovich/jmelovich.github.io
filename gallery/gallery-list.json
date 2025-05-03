@@ -1,7 +1,25 @@
 [
 	{
+		"src": "../BIOS.update/IM_Bonus1_4x.jpg",
+		"alt": "BIOS.update",
+		"modalContent": "",
+		"offset": "100% center"
+	},
+	{
+		"src": "../BIOS.update/IM_Bonus4_4x.jpg",
+		"alt": "BIOS.update",
+		"modalContent": "",
+		"offset": "100% center"
+	},
+	{
+		"src": "../BIOS.update/IM_Bonus2_4x.jpg",
+		"alt": "BIOS.update",
+		"modalContent": "",
+		"offset": "100% center"
+	},
+	{
 		"src": "IM_Bonus3_2x.jpg",
-		"alt": "BIOS.UPDATE IMINENT",
+		"alt": "BIOS.update",
 		"modalContent": "",
 		"offset": "100% center"
 	},
