@@ -7,21 +7,38 @@
     <meta name="description" content="Official Website of Therum - Experience music, videos, tour dates, and more.">
     <link rel="icon" href="source/icons/TherumIcon.ico">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="therminal/therminal-iframe.css">
 </head>
 <body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">THERUM</a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#discography">Discography</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#subscribe">Subscribe</a></li>
+            </ul>
+        </div>
+    </nav>
+    
     <div class="content">
         <img class="title" src="source/TherumLogoCropped.jpg" alt="Therum Logo">
         
         <div class="social-links">
-            <a href="https://www.instagram.com/therum.music/" target="_blank" class="fab fa-instagram"></a>
-            <a href="https://www.youtube.com/@therummusic/" target="_blank" class="fab fa-youtube"></a>
-            <a href="https://soundcloud.com/therummusic/" target="_blank" class="fab fa-soundcloud"></a>
-            <a href="https://open.spotify.com/artist/4G7WRo3PoJefJeeAFiZvNC?si=04d29bc6815a47c4" target="_blank" class="fab fa-spotify"></a>
-            <a href="https://music.apple.com/us/artist/therum/1577386360" target="_blank" class="fab fa-apple"></a>
-            <a href="https://therum1.bandcamp.com/" target="_blank" class="fab fa-bandcamp"></a>
+            <a href="https://www.instagram.com/therum.music/" target="_blank" class="fab fa-instagram" aria-label="Instagram"></a>
+            <a href="https://www.youtube.com/@therummusic/" target="_blank" class="fab fa-youtube" aria-label="YouTube"></a>
+            <a href="https://soundcloud.com/therummusic/" target="_blank" class="fab fa-soundcloud" aria-label="Soundcloud"></a>
+            <a href="https://open.spotify.com/artist/4G7WRo3PoJefJeeAFiZvNC?si=04d29bc6815a47c4" target="_blank" class="fab fa-spotify" aria-label="Spotify"></a>
+            <a href="https://music.apple.com/us/artist/therum/1577386360" target="_blank" class="fab fa-apple" aria-label="Apple Music"></a>
+            <a href="https://therum1.bandcamp.com/" target="_blank" class="fab fa-bandcamp" aria-label="Bandcamp"></a>
         </div>
 
         <div class="headline-section">
@@ -29,60 +46,75 @@
             <button class="redirect-button" onclick="window.location.href='https://gyro.to/MAVEN'">MAVEN - OUT NOW</button>
         </div>  
 
-
-
-
-        <h2>Discography</h2>
-        <div class="album_gallery">
-            <!-- <figure class="gallery-item">
-                <video id="drumn-video" src="discography/gallery/drumn_comp.mp4" poster="discography/gallery/drumn.jpg" alt="DRUMN - 2025" autoplay loop muted playsinline preload="auto" onclick="openModal(this)" class="gallery-video"></video>
-            </figure> -->
-            <figure class="gallery-item">
-                <video id="maven-video" src="https://storage.googleapis.com/therum-website-lts/art/maven_animate_4_comp.mp4" poster="discography/gallery/Maven.jpg" alt="MAVEN - 2025" autoplay loop muted playsinline preload="auto" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/36Ta4R8uP7cQvgkABBX81s?utm_source=generator\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')" class="gallery-video"></video>
-            </figure>
-            <figure class="gallery-item">
-                <img src="BIOS.update/IM_FinalAlbumArt_4k_Recolor.jpg" alt="BIOS.update - 2024" onclick="window.location.href='BIOS.update/bios.update.html'">
-            </figure>
-            <figure class="gallery-item">
-                <img src="discography/gallery/AetherumCutsArt-4k.jpeg" alt="Aetherum Cuts - 2024" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/1T2YWVcZ11Lyj0TSXU04A4?utm_source=generator&theme=0\' style=\'width:min(800px, 80vw); height:28vh; \' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
-            </figure>
-            <figure class="gallery-item">
-                <img src="discography/gallery/DarklinesWithinUs.jpg" alt="Darklines Within Us - 2023" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/3p9SEBWbwhPabhYlECaj2d\' style=\'width:min(800px, 80vw); height:45vh; \' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
-            </figure>
-            <figure class="gallery-item">
-                <img src="discography/gallery/SweetVictoriesArt.jpg" alt="Sweet Victories / Sour Defeat - 2023" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/6aIRDQTEquSBgy15wfCpRp\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
-            </figure>
-            <figure class="gallery-item">
-                <img src="discography/gallery/IKnowThatYouKnow.png" alt="I Know (That You Know That I Knew) - 2022" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/7GtWOIwqO6csixTeM1kak1\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
-            </figure>     
-            <figure class="gallery-item">
-                <img src="discography/gallery/ILikeBeans.jpg" alt="I Like Beans - 2022" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/09gPcMmiAmPtD2LGEqS95x\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
-            </figure>
-            <figure class="gallery-item">
-                <img src="discography/gallery/TwoSunkenSons.jpg" alt="Two Sunken Sons - 2021" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/2oX2lq1AH0l81vPCsveBAc\' style=\'width:min(800px, 80vw); height:60vh;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
-            </figure>
-        </div>
+        <section id="discography">
+            <h2 class="section-title">Discography</h2>
+            <div class="container">
+                <div class="album_gallery">
+                    <figure class="gallery-item">
+                        <video id="maven-video" src="https://storage.googleapis.com/therum-website-lts/art/maven_animate_4_comp.mp4" poster="discography/gallery/Maven.jpg" alt="MAVEN - 2025" autoplay loop muted playsinline preload="auto" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/36Ta4R8uP7cQvgkABBX81s?utm_source=generator\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')" class="gallery-video"></video>
+                        <figcaption>MAVEN (2025)</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="BIOS.update/IM_FinalAlbumArt_4k_Recolor.jpg" alt="BIOS.update - 2024" onclick="window.location.href='BIOS.update/bios.update.html'">
+                        <figcaption>BIOS.update (2024)</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="discography/gallery/AetherumCutsArt-4k.jpeg" alt="Aetherum Cuts - 2024" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/1T2YWVcZ11Lyj0TSXU04A4?utm_source=generator&theme=0\' style=\'width:min(800px, 80vw); height:28vh; \' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+                        <figcaption>Aetherum Cuts (2024)</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="discography/gallery/DarklinesWithinUs.jpg" alt="Darklines Within Us - 2023" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/3p9SEBWbwhPabhYlECaj2d\' style=\'width:min(800px, 80vw); height:45vh; \' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+                        <figcaption>Darklines Within Us (2023)</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="discography/gallery/SweetVictoriesArt.jpg" alt="Sweet Victories / Sour Defeat - 2023" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/6aIRDQTEquSBgy15wfCpRp\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+                        <figcaption>Sweet Victories (2023)</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="discography/gallery/IKnowThatYouKnow.png" alt="I Know (That You Know That I Knew) - 2022" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/7GtWOIwqO6csixTeM1kak1\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+                        <figcaption>I Know (2022)</figcaption>
+                    </figure>     
+                    <figure class="gallery-item">
+                        <img src="discography/gallery/ILikeBeans.jpg" alt="I Like Beans - 2022" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/09gPcMmiAmPtD2LGEqS95x\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+                        <figcaption>I Like Beans (2022)</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="discography/gallery/TwoSunkenSons.jpg" alt="Two Sunken Sons - 2021" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/2oX2lq1AH0l81vPCsveBAc\' style=\'width:min(800px, 80vw); height:60vh;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
+                        <figcaption>Two Sunken Sons (2021)</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
         
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/xs1fRAFCAug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+        <section id="videos">
+            <h2 class="section-title">Latest Video</h2>
+            <div class="container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/xs1fRAFCAug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
 
-        <h3>The Gallery</h3>
-        <div class="gallery">
-            <!-- Gallery items here -->
-        </div>
+        <section id="gallery">
+            <h2 class="section-title">The Gallery</h2>
+            <div class="container">
+                <div class="gallery">
+                    <!-- Gallery items here -->
+                </div>
+            </div>
+        </section>
 
-        <div class="newsletter-signup">
+        <section id="subscribe" class="newsletter-signup">
             <h2>Stay Updated</h2>
+            <p>Subscribe to get email updates on the latest from Therum</p>
             <form>
                 <input type="email" name="email" placeholder="YOUR EMAIL ADDRESS" required>
                 <button type="submit" name="subscribe">Subscribe</button>
             </form>
-            <p class="caption">[subscribe to get email updates on the latest from Therum]</p>
-        </div>
+        </section>
 
         <div class="contact-info">
-            <a href="mailto:therum.music@gmail.com" class="contact-link">Contact: therum.music@gmail.com</a>
+            <a href="mailto:therum.music@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> therum.music@gmail.com</a>
         </div>
     </div>
 
@@ -95,8 +127,20 @@
         </div>
     </div>
 
-    <button id="therminal-toggle">Open Therminal</button>
+    <button id="therminal-toggle"><i class="fas fa-terminal"></i></button>
     <iframe id="therminal-iframe" src="therminal.html"></iframe>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">THERUM</div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/therum.music/" target="_blank" class="fab fa-instagram" aria-label="Instagram"></a>
+                <a href="https://www.youtube.com/@therummusic/" target="_blank" class="fab fa-youtube" aria-label="YouTube"></a>
+                <a href="https://open.spotify.com/artist/4G7WRo3PoJefJeeAFiZvNC" target="_blank" class="fab fa-spotify" aria-label="Spotify"></a>
+            </div>
+            <div class="footer-copyright">© 2025 Therum. All Rights Reserved.</div>
+        </div>
+    </footer>
 
     <script src="interact.js"></script>
     <script src="therminal/therminal-iframe.js"></script>
@@ -122,6 +166,50 @@
                     }, { once: true });
                 });
             }
+            
+            // Add fade-in animations to elements as they scroll into view
+            const observeElements = document.querySelectorAll('.gallery-item, .video-wrapper, .headline-section, .newsletter-signup');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            observeElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Mobile menu toggle
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // Smooth scrolling for nav links
+            document.querySelectorAll('.nav-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                });
+            });
         });
     </script>
 </body>

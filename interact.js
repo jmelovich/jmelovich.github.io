@@ -16,9 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     var descBox = document.querySelector('.description');
-    if (!descBox) {
-        console.error('.description element not found');
-    } else {
+    if (descBox) {
         descBox.addEventListener('click', function () {
             if (this.style.maxHeight !== this.scrollHeight + "px") {
                 this.style.maxHeight = this.scrollHeight + "px";
@@ -29,22 +27,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     var span = document.getElementsByClassName("close")[0];
-    if (!span) {
-        console.error('.close span element not found');
-    } else {
+    if (span) {
         span.onclick = function() { 
-            modal.style.display = "none";
+            closeModal();
         };
     }
 
+    // Close modal with Escape key
     document.addEventListener('keydown', function(event) {
         if (event.key === "Escape" && modal.style.display === "block") {
-            modal.style.display = "none";
-            // Pause any playing videos when closing the modal
-            var modalVideo = document.querySelector('.modal-content video');
-            if (modalVideo) {
-                modalVideo.pause();
-            }
+            closeModal();
+        }
+    });
+
+    // Close modal when clicking outside of modal content
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
         }
     });
 
@@ -67,6 +66,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Check if the email field is not empty and send the 'email' to Formspree
             if(email.trim() !== '') {
                 var subscribeButton = document.querySelector('.newsletter-signup form button');
+                
+                // Show loading state
+                subscribeButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                subscribeButton.disabled = true;
+                
                 fetch('https://formspree.io/f/mleyejpr', { // replace with your Formspree ID
                     method: 'POST',
                     headers: {
@@ -78,48 +82,70 @@ document.addEventListener('DOMContentLoaded', function() {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     console.log('Email Submitted:', email);
-                    subscribeButton.textContent = 'Subscribed';
-                    subscribeButton.disabled = true;
-                    subscribeButton.classList.add('disabled');
+                    subscribeButton.innerHTML = '<i class="fas fa-check"></i> Subscribed';
+                    subscribeButton.classList.add('success');
                     return response.json();
                 }).then(json => {
                     console.log('Email sent successfully:', json);
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        form.reset();
+                        subscribeButton.innerHTML = 'Subscribe';
+                        subscribeButton.disabled = false;
+                        subscribeButton.classList.remove('success');
+                    }, 3000);
                 }).catch(error => {
                     console.error('Failed to send email:', error);
+                    subscribeButton.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
+                    subscribeButton.classList.add('error');
+                    setTimeout(() => {
+                        subscribeButton.innerHTML = 'Try Again';
+                        subscribeButton.disabled = false;
+                        subscribeButton.classList.remove('error');
+                    }, 3000);
                 });
             } else {
                 console.warn('Email field is empty.');
             }
         });
-    } else {
-        console.error('.newsletter-signup form element not found');
     }
 
-// Fetch the list of images from the JSON file
-fetch('gallery/gallery-list.json')
-    .then(response => response.json())
-    .then(imageData => {
-        const gallery = document.querySelector('.gallery');
-        if (!gallery) {
-            console.error('.gallery element not found');
-            return;
-        }
+    // Fetch the list of images from the JSON file
+    fetch('gallery/gallery-list.json')
+        .then(response => response.json())
+        .then(imageData => {
+            const gallery = document.querySelector('.gallery');
+            if (!gallery) {
+                console.error('.gallery element not found');
+                return;
+            }
 
-        imageData.forEach(data => {
-            const figure = document.createElement('figure');
-            figure.className = 'gallery-item';
-            const img = document.createElement('img');
-            img.src = `gallery/${data.src}`;
-            img.alt = data.alt;
-            img.style.setProperty('--object-position', data.offset);
-            img.onclick = () => openModal(img, data.modalContent);
-            figure.appendChild(img);
-            gallery.appendChild(figure);
+            imageData.forEach(data => {
+                const figure = document.createElement('figure');
+                figure.className = 'gallery-item';
+                
+                const img = document.createElement('img');
+                img.src = `gallery/${data.src}`;
+                img.alt = data.alt;
+                if (data.offset) {
+                    img.style.setProperty('--object-position', data.offset);
+                }
+                img.onclick = () => openModal(img, data.modalContent);
+                
+                figure.appendChild(img);
+                
+                if (data.title) {
+                    const figcaption = document.createElement('figcaption');
+                    figcaption.textContent = data.title;
+                    figure.appendChild(figcaption);
+                }
+                
+                gallery.appendChild(figure);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching gallery list:', error);
         });
-    })
-    .catch(error => {
-        console.error('Error fetching gallery list:', error);
-    });
 
     // Add event listeners to ensure videos play properly
     document.querySelectorAll('video').forEach(video => {
@@ -139,6 +165,26 @@ fetch('gallery/gallery-list.json')
         });
     });
 
+    // Add scroll-based animations
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.gallery-item, .video-wrapper, section');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // If element is in viewport
+            if (elementPosition.top < windowHeight * 0.9) {
+                element.classList.add('in-view');
+            }
+        });
+    };
+    
+    // Run on page load
+    animateOnScroll();
+    
+    // Run on scroll
+    window.addEventListener('scroll', animateOnScroll);
 });
 
 function openModal(element, spotifyEmbed = "") {
@@ -152,7 +198,9 @@ function openModal(element, spotifyEmbed = "") {
         return;
     }
 
+    // First make modal display block but with opacity 0
     modal.style.display = "block";
+    modal.style.opacity = "0";
     
     // Handle video or image based on element type
     if (element.tagName.toLowerCase() === 'video') {
@@ -166,7 +214,6 @@ function openModal(element, spotifyEmbed = "") {
             modalVideo.loop = true;
             modalVideo.muted = true;
             modalVideo.playsInline = true;
-            // Removed controls to make it appear more like an image
             
             // If the original video has a poster, use it
             if (element.hasAttribute('poster')) {
@@ -204,19 +251,28 @@ function openModal(element, spotifyEmbed = "") {
         descriptionText.innerHTML = "";
     }
 
-    var span = document.getElementsByClassName("close")[0];
-    if (span) {
-        span.onclick = function() { 
-            modal.style.display = "none";
-            // Pause any playing videos when closing the modal
-            var modalVideo = document.querySelector('.modal-content video');
-            if (modalVideo) {
-                modalVideo.pause();
-            }
-        };
-    } else {
-        console.error('.close span element not found in openModal');
-    }
+    // Fade in modal
+    setTimeout(() => {
+        modal.style.opacity = "1";
+    }, 10);
+}
+
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    
+    // Fade out animation
+    modal.style.opacity = "0";
+    
+    // After fade out completes, hide the modal
+    setTimeout(() => {
+        modal.style.display = "none";
+        
+        // Pause any playing videos when closing the modal
+        var modalVideo = document.querySelector('.modal-content video');
+        if (modalVideo) {
+            modalVideo.pause();
+        }
+    }, 300); // match this time with the CSS transition time
 }
 
 // Function to adjust the height of description box 
@@ -227,7 +283,5 @@ function adjustHeight() {
             // If it was expanded, recompute and set the maxHeight
             descBox.style.maxHeight = descBox.scrollHeight + "px";
         }
-    } else {
-        console.error('.description element not found in adjustHeight');
     }
 }

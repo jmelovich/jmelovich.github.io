@@ -5,7 +5,13 @@ function toggleTherminal() {
     const toggleButton = document.getElementById('therminal-toggle');
     
     iframe.classList.toggle('expanded');
-    toggleButton.textContent = iframe.classList.contains('expanded') ? 'Close Therminal' : 'Open Therminal';
+    
+    // Update the button icon based on expanded state
+    if (iframe.classList.contains('expanded')) {
+        toggleButton.innerHTML = '<i class="fas fa-times"></i>';
+    } else {
+        toggleButton.innerHTML = '<i class="fas fa-terminal"></i>';
+    }
     
     if (iframe.classList.contains('expanded')) {
         // Focus the input field inside the iframe

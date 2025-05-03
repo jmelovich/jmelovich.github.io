@@ -64,7 +64,7 @@ ${availablePages.join("\n")}\n\n`);
                 // Check if the terminal is running in an iframe
                 if (isInIframe) {
                     // If in iframe, navigate the parent window
-                    window.parent.location.href = pageLink;
+                    window.top.location.href = pageLink;
                 } else {
                     // If not in iframe, navigate normally
                     setTimeout(() => {
@@ -74,7 +74,11 @@ ${availablePages.join("\n")}\n\n`);
             } else if (page === "bios.update"){
                 typeWriter(`Navigating to ${page}...\n\n`);
                 setTimeout(() => {
-                    window.location.href = "BIOS.update/bios.update.html";
+                    if (isInIframe) {
+                        window.top.location.href = "BIOS.update/bios.update.html";
+                    } else {
+                        window.location.href = "BIOS.update/bios.update.html";
+                    }
                 }, 2000);
             } else {
                 typeWriter(`Error: Page '${page}' not found. Use 'ls' to see available pages.\n\n`);
@@ -217,7 +221,7 @@ ERR: 0x39 0x2F 0x32 0x31 0x2F 0x32 0x30 0x32 0x34 {ASCII}
         if (isInIframe) {
             typeWriter("Opening Therminal in full window...\n\n");
             setTimeout(() => {
-                window.parent.location.href = 'therminal.html';
+                window.top.location.href = 'therminal.html';
             }, 1500);
         } else {
             typeWriter("The 'maximize' command is not available in this mode.\n\n");
@@ -228,11 +232,11 @@ ERR: 0x39 0x2F 0x32 0x31 0x2F 0x32 0x30 0x32 0x34 {ASCII}
         if (isInIframe) {
             typeWriter("Closing terminal...", () => {
                 // Collapse the iframe first
-                window.parent.document.getElementById('therminal-iframe').classList.remove('expanded');
+                window.top.document.getElementById('therminal-iframe').classList.remove('expanded');
                 // Update the toggle button text
-                const toggleButton = window.parent.document.getElementById('therminal-toggle');
+                const toggleButton = window.top.document.getElementById('therminal-toggle');
                 if (toggleButton) {
-                    toggleButton.textContent = 'Open Therminal';
+                    toggleButton.innerHTML = '<i class="fas fa-terminal"></i>';
                 }
                 
                 // Use setTimeout to delay clearing the terminal
