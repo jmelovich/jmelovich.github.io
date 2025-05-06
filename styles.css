@@ -887,3 +887,59 @@ section {
 #discography .album_gallery {
     width: 100%;
 }
+
+/* Styles for Streaming Icons and Embed in Modal */
+.streaming-links-container {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center icons horizontally */
+    align-items: center; /* Align icons vertically */
+    margin-bottom: 20px; /* Space below the icons, before the embed */
+    padding: 10px 0; /* Some padding above/below the icon row */
+}
+
+.streaming-links-container a {
+    font-size: 2.5em;  /* Increased icon size */
+    margin: 0 15px;   /* Horizontal space between icons */
+    color: #b0b0b0;    /* Icon color - adjust as preferred */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+}
+
+.streaming-links-container a:hover,
+.streaming-links-container a:focus { /* Added focus for accessibility */
+    color: #ffffff;    /* Brighter icon color on hover/focus - adjust as preferred */
+    transform: scale(1.15); /* Slightly enlarge icon on hover/focus */
+}
+
+/* Style for custom image icons within the streaming links */
+.streaming-links-container a img {
+    height: 1em; /* Match the height to the font-size of Font Awesome icons */
+    width: auto;   /* Maintain aspect ratio */
+    display: block; /* Ensures proper alignment and size application */
+    vertical-align: middle; /* Helps align with text if any, though not expected here */
+    opacity: 0.7; /* Initial opacity for image icons */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity change */
+}
+
+/* Change opacity of image icon on link hover/focus */
+.streaming-links-container a:hover img,
+.streaming-links-container a:focus img {
+    opacity: 1; /* Full opacity on hover/focus */
+}
+
+/* Addressing potential box around the embed and its spacing */
+/* This targets the div that directly contains the iframe embed */
+#description > div:not(.streaming-links-container) {
+    border: none !important; /* Attempt to remove any unwanted border */
+    padding: 0 !important; /* Attempt to remove any unwanted padding */
+    line-height: 0; /* Can help remove extra space around iframes */
+    margin-top: 0; /* Ensure no top margin pushing it down */
+}
+
+/* General iframe styling within the modal description for robustness */
+#description iframe {
+    display: block; /* Removes potential bottom space under iframe */
+    margin: 0 auto; /* Center iframe if its width is less than container */
+    max-width: 100%; /* Ensure it's responsive */
+    border: none; /* Reiterate no border for the iframe itself */
+}

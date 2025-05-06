@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', animateOnScroll);
 });
 
-function openModal(element, spotifyEmbed = "") {
+function openModal(element, modalData = {}) {
     var modal = document.getElementById("myModal");
     var modalImg = document.getElementById("img01");
     var captionText = document.getElementById("caption");
@@ -245,9 +245,63 @@ function openModal(element, spotifyEmbed = "") {
     // Use getAttribute to avoid undefined when alt is not present
     captionText.innerHTML = element.getAttribute('alt') || '';
 
-    if (spotifyEmbed !== "") {
-        descriptionText.innerHTML = spotifyEmbed;
-    } else {
+    // Clear previous description
+    descriptionText.innerHTML = "";
+
+    // Add streaming links if provided
+    if (modalData.streamingLinks) {
+        const linksContainer = document.createElement('div');
+        linksContainer.className = 'streaming-links-container';
+
+        const preferredOrder = ['spotify', 'apple', 'youtube', 'tidal', 'amazon', 'bandcamp'];
+        const processedServices = new Set();
+
+        // First, add links in preferred order
+        preferredOrder.forEach(serviceName => {
+            if (modalData.streamingLinks.hasOwnProperty(serviceName) && modalData.streamingLinks[serviceName]) {
+                const link = document.createElement('a');
+                link.href = modalData.streamingLinks[serviceName];
+                link.target = "_blank";
+                link.setAttribute('aria-label', serviceName.charAt(0).toUpperCase() + serviceName.slice(1));
+
+                if (serviceName.toLowerCase() === 'tidal') {
+                    const img = document.createElement('img');
+                    img.src = 'source/icons/tidal_icon.png';
+                    img.alt = 'Tidal';
+                    link.appendChild(img);
+                } else {
+                    link.className = `fab fa-${serviceName.toLowerCase()}`;
+                }
+                linksContainer.appendChild(link);
+                processedServices.add(serviceName);
+            }
+        });
+
+        // Then, add any remaining links not in preferred order
+        for (const serviceName in modalData.streamingLinks) {
+            if (modalData.streamingLinks.hasOwnProperty(serviceName) && modalData.streamingLinks[serviceName] && !processedServices.has(serviceName)) {
+                const link = document.createElement('a');
+                link.href = modalData.streamingLinks[serviceName];
+                link.target = "_blank";
+                link.setAttribute('aria-label', serviceName.charAt(0).toUpperCase() + serviceName.slice(1));
+
+                // Note: Tidal image handling is specific to the preferred loop. 
+                // If Tidal could somehow be outside preferredOrder and needs image, this part would need duplication or refactor.
+                // However, with Tidal in preferredOrder, this else block is fine.
+                link.className = `fab fa-${serviceName.toLowerCase()}`;
+                
+                linksContainer.appendChild(link);
+            }
+        }
+        descriptionText.appendChild(linksContainer);
+    }
+
+    // Add Spotify embed if provided
+    if (modalData.spotifyEmbed && modalData.spotifyEmbed !== "") {
+        const embedContainer = document.createElement('div');
+        embedContainer.innerHTML = modalData.spotifyEmbed;
+        descriptionText.appendChild(embedContainer);
+    } else if (!modalData.streamingLinks) { // If no links and no embed, clear description
         descriptionText.innerHTML = "";
     }
 
