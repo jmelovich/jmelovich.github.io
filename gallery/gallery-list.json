@@ -1,5 +1,17 @@
 [
 	{
+		"src": "maven_aa2.jpg",
+		"alt": "MAVEN (additional art)",
+		"modalContent": "",
+		"offset": "100% center"
+	},
+	{
+		"src": "maven_aa1.jpg",
+		"alt": "MAVEN (additional art)",
+		"modalContent": "",
+		"offset": "100% center"
+	},
+	{
 		"src": "../BIOS.update/IM_Bonus1_4x.jpg",
 		"alt": "BIOS.update",
 		"modalContent": "",
