@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Therum</title>
     <meta charset="UTF-8">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="therminal/therminal-iframe.css">
 </head>
+
 <body>
     <nav class="main-nav">
         <div class="nav-container">
@@ -28,10 +30,10 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="content">
         <img class="title" src="source/TherumLogoCropped.jpg" alt="Therum Logo">
-        
+
         <div class="social-links">
             <a href="https://www.instagram.com/therum.music/" target="_blank" class="fab fa-instagram" aria-label="Instagram"></a>
             <a href="https://www.youtube.com/@therummusic/" target="_blank" class="fab fa-youtube" aria-label="YouTube"></a>
@@ -41,17 +43,32 @@
             <a href="https://therum1.bandcamp.com/" target="_blank" class="fab fa-bandcamp" aria-label="Bandcamp"></a>
         </div>
 
+
         <div class="headline-section">
+            <h1>DRUMN \/ 5.16.25</h1>
+            <button class="redirect-button" onclick="window.location.href='https://gyro.to/DRUMN'">DRUMN - PRE-SAVE NOW</button>
+            
+            <div class="release-separator" style="margin: 20px 0; text-align: center;">
+            </div>
+            
             <h1>MAVEN /\ 5.1.25</h1>
-            <button class="redirect-button" onclick="window.location.href='https://gyro.to/MAVEN'">MAVEN - OUT NOW</button>
-        </div>  
+            <button class="redirect-button" onclick="window.location.href='https://gyro.to/MAVEN'">MAVEN - STREAMING NOW</button>
+        </div>
+
+
+        </div>
 
         <section id="discography">
             <h2 class="section-title">Discography</h2>
             <div class="container">
                 <div class="album_gallery">
                     <figure class="gallery-item">
-                        <video id="maven-video" src="https://storage.googleapis.com/therum-website-lts/art/maven_animate_4_comp.mp4" poster="discography/gallery/Maven.jpg" alt="MAVEN - 2025" autoplay loop muted playsinline preload="auto" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/36Ta4R8uP7cQvgkABBX81s?utm_source=generator\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')" class="gallery-video"></video>
+                        <video id="drumn-video" src="https://storage.googleapis.com/therum-website-lts/art/drumn_aaa_final_comp.mp4" poster="discography/gallery/Drumn.jpg" alt="DRUMN - 2025" autoplay loop muted playsinline preload="auto" onclick="openModal(this, '5.16.25')" class="gallery-video"></video>
+                        <figcaption>DRUMN (2025)</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <video id="maven-video" src="https://storage.googleapis.com/therum-website-lts/art/maven_animate_4_comp.mp4" poster="discography/gallery/Maven.jpg" alt="MAVEN - 2025" autoplay loop muted playsinline preload="auto" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/36Ta4R8uP7cQvgkABBX81s?utm_source=generator\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')"
+                            class="gallery-video"></video>
                         <figcaption>MAVEN (2025)</figcaption>
                     </figure>
                     <figure class="gallery-item">
@@ -73,7 +90,7 @@
                     <figure class="gallery-item">
                         <img src="discography/gallery/IKnowThatYouKnow.png" alt="I Know (That You Know That I Knew) - 2022" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/7GtWOIwqO6csixTeM1kak1\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
                         <figcaption>I Know (2022)</figcaption>
-                    </figure>     
+                    </figure>
                     <figure class="gallery-item">
                         <img src="discography/gallery/ILikeBeans.jpg" alt="I Like Beans - 2022" onclick="openModal(this, '<iframe src=\'https://open.spotify.com/embed/album/09gPcMmiAmPtD2LGEqS95x\' style=\'width:min(800px, 80vw); height:250px;\' frameborder=\'0\' allowtransparency=\'true\' allow=\'encrypted-media\'></iframe>')">
                         <figcaption>I Like Beans (2022)</figcaption>
@@ -85,7 +102,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="videos">
             <h2 class="section-title">Latest Video</h2>
             <div class="container">
@@ -154,7 +171,7 @@
                     therminalToggle.click();
                 }
             }
-            
+
             // Force play the video on page load
             const mavenVideo = document.getElementById('maven-video');
             if (mavenVideo) {
@@ -163,13 +180,15 @@
                     // Try again after a user interaction
                     document.body.addEventListener('click', function() {
                         mavenVideo.play().catch(e => console.error('Still could not play video:', e));
-                    }, { once: true });
+                    }, {
+                        once: true
+                    });
                 });
             }
-            
+
             // Add fade-in animations to elements as they scroll into view
             const observeElements = document.querySelectorAll('.gallery-item, .video-wrapper, .headline-section, .newsletter-signup');
-            
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -178,32 +197,34 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.2 });
-            
+            }, {
+                threshold: 0.2
+            });
+
             observeElements.forEach(el => {
                 observer.observe(el);
             });
-            
+
             // Mobile menu toggle
             const navToggle = document.getElementById('navToggle');
             const navLinks = document.querySelector('.nav-links');
-            
+
             navToggle.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
                 navToggle.classList.toggle('active');
             });
-            
+
             // Smooth scrolling for nav links
             document.querySelectorAll('.nav-links a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
+
                     navLinks.classList.remove('active');
                     navToggle.classList.remove('active');
-                    
+
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
-                    
+
                     window.scrollTo({
                         top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
@@ -213,4 +234,5 @@
         });
     </script>
 </body>
+
 </html>
